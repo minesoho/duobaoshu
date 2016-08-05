@@ -17,7 +17,7 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css'
+  'styles/**/*.scss'
 ];
 
 
@@ -26,7 +26,7 @@ var cssFilesToInject = [
 var jsFilesToInject = [
 
   // Load sails.io before everything else
-  'js/dependencies/sails.io.js',
+  // 'js/dependencies/sails.io.js',
 
   // Dependencies like jQuery, or Angular are brought in here
   'js/dependencies/**/*.js',
@@ -83,5 +83,3 @@ module.exports.templateFilesToInject = templateFilesToInject.map(function(tplPat
   }
   return require('path').join('assets/',tplPath);
 });
-
-
