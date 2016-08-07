@@ -1,0 +1,37 @@
+{
+    "vfx": {
+        "more": {
+            "title": "更多特效",
+            "subtitle": "VFX",
+            "more": true
+        },
+        "main": {
+            "img": "/images/test/vfx_main.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        },
+        "list": [{
+            "img": "/images/test/vfx_1.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        },{
+            "img": "/images/test/vfx_1.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        },{
+            "img": "/images/test/vfx_2.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        }]
+    },
+    "animation": {}
+
+}
