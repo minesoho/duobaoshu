@@ -12,7 +12,7 @@
         <script src="js/common/resize.js"></script>
         <div class="window">
             {%include "./part/header/index.swig"%}
-            {%include "./part/home/main.swig"%}
+            {%include "./part/home/main.swig" with data%}
         </div>
     </body>
 </html>

@@ -1,0 +1,42 @@
+@size-unit-normal: @window-width-normal/3;
+@showcase-width: (@window-width-normal - 20)/3;
+.page__vfx{
+    width: 99%;
+    margin: 0 auto;
+    position: relative;
+    .vfx__more{
+        float: left;
+    }
+    .vfx__main{
+        float: left;
+    }
+    .vfx__list{
+        overflow: hidden;
+        height: @size-unit-normal;
+    }
+    .vtx__item{
+        float: left;
+    }
+    .vfx__showcases{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+    .showcases__cover{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .showcases__item{
+        float: left;
+        width: @showcase-width;
+        padding: @showcase-width/10;
+    }
+}

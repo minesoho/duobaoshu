@@ -1,8 +1,10 @@
 @import './common/base.less';
 @import "./part/header.less";
+@import "./part/home/main.less";
 
 @bg-image: '/images/bg.jpg';
-
+@window-width-normal: 960px;
+@window-height-normal: @window-width-normal*2/3;
 body{
     background-color: #000;
 }
@@ -19,4 +21,11 @@ body{
 }
 .window{
     color: @color-white;
+    margin: 0 auto;
+}
+.body--normal{
+    .window{
+        width: @window-width-normal;
+        height: @window-height-normal;
+    }
 }

@@ -19,19 +19,91 @@
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
             "href": ""
         },{
-            "img": "/images/test/vfx_1.jpg",
+            "img": "/images/test/vfx_2.jpg",
             "title": "赛德克·巴莱",
             "subtitle": "Seediq.Bale",
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
             "href": ""
         },{
-            "img": "/images/test/vfx_2.jpg",
+            "img": "/images/test/vfx_3.jpg",
             "title": "赛德克·巴莱",
             "subtitle": "Seediq.Bale",
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
             "href": ""
         }]
     },
-    "animation": {}
-
+    "animation": {
+        "more": {
+            "title": "动画作品",
+            "subtitle": "ANIMATION",
+            "more": true
+        },
+        "main": {
+            "img": "/images/test/animation_main.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        },
+        "list": [{
+            "img": "/images/test/animation_1.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        },{
+            "img": "/images/test/animation_2.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        },{
+            "img": "/images/test/animation_3.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        }]
+    },
+    "origin": {
+        "more": {
+            "title": "原创作品",
+            "subtitle": "ORIGINAL",
+            "more": true
+        },
+        "main": {
+            "img": "/images/test/origin_main.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        },
+        "list": [{
+            "img": "/images/test/origin_1.jpg",
+            "title": "多宝猴",
+            "subtitle": "Monky",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "showcase": {
+                "type": "across",
+                "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+                "img": "/images/test/origin_showcase_1.jpg"
+            }
+        },{
+            "img": "/images/test/origin_2.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "showcase": {
+                "type": "vertical",
+                "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+                "img": "/images/test/origin_showcase_2.jpg"
+            }
+        },{
+            "img": "/images/test/origin_3.jpg",
+            "title": "赛德克·巴莱",
+            "subtitle": "Seediq.Bale",
+            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+            "href": ""
+        }]
+    }
 }

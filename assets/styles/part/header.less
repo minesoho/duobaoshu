@@ -1,19 +1,10 @@
 @head-height-normal: 102px;
 @head-padding-top-normal: 60px;
 @head-padding-bottom-normal: 60px;
-@head-padding-left-normal: 255px;
-@head-padding-right-normal: 255px;
 
 @head-padding-left-mini: 60px;
 @head-padding-right-mini: 60px;
 
-.body--mini{
-    .tts__head{
-        .head__box{
-            padding: @head-padding-top-normal @head-padding-right-mini @head-padding-bottom-normal @head-padding-left-mini;
-        }
-    }
-}
 .tts__head{
     position: relative;
     height: @head-height-normal+@head-padding-bottom-normal+@head-padding-top-normal;
@@ -23,7 +14,8 @@
         left: 0;
         width: 100%;
         height: @head-height-normal;
-        padding: @head-padding-top-normal @head-padding-right-normal @head-padding-bottom-normal @head-padding-left-normal;
+        padding-top: @head-padding-top-normal;
+        padding-bottom: @head-padding-bottom-normal;
         box-sizing: border-box;
         .box__logo{
             float: left;
