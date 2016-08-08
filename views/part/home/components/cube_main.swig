@@ -3,6 +3,7 @@
         <img src="{{img}}" alt="{{title}}" />
     </div>
     <div class="main__entry">
+        <div class="entry__cover"></div>
         <div class="entry__title">
             {{title}}
         </div>

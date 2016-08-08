@@ -1,4 +1,7 @@
 <div class="tts__more">
+    <div class="tts__more__bg">
+        <img src="/images/bg_grey.jpg"/>
+    </div>
     <p class="more__title">{{title}}</p>
     <p class="more__subtitle">{{subtitle}}</p>
     {%if more%}

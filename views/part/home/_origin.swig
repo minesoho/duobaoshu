@@ -6,10 +6,19 @@
         {%include './components/cube_main.swig' with main only%}
     </div>
     <ul class="origin__list">
-        {% for item in showcases%}
-            <li class="showcases__item">
-                <div class="showcase__thumb">
+        {% for item in list%}
+            <li class="list__item">
+                <div class="list__thumb">
                     <img src="{{item.img}}" alt="{{item.title}}" />
+                </div>
+                <div class="list__entry">
+                    <div class="entry__cover"></div>
+                    <p class="entry__title">{{item.title}}</p>
+                    <p class="entry__subtitle">{{item.subtitle}}</p>
+                    <p class="entry__desc">{{item.desc}}</p>
+                    <div class="entry__action">
+                        <i class="tts__icon tts__icon__play"></i>
+                    </div>
                 </div>
             </li>
         {%endfor%}
