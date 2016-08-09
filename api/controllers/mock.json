@@ -39,26 +39,26 @@
             "more": true
         },
         "main": {
-            "img": "/images/test/animation_main.jpg",
+            "img": "/images/test/origin_main.jpg",
             "title": "赛德克·巴莱",
             "subtitle": "Seediq.Bale",
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
             "href": ""
         },
         "list": [{
-            "img": "/images/test/animation_1.jpg",
+            "img": "/images/test/vfx_1.jpg",
             "title": "赛德克·巴莱",
             "subtitle": "Seediq.Bale",
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
             "href": ""
         },{
-            "img": "/images/test/animation_2.jpg",
+            "img": "/images/test/vfx_2.jpg",
             "title": "赛德克·巴莱",
             "subtitle": "Seediq.Bale",
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
             "href": ""
         },{
-            "img": "/images/test/animation_3.jpg",
+            "img": "/images/test/vfx_3.jpg",
             "title": "赛德克·巴莱",
             "subtitle": "Seediq.Bale",
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",

@@ -3,23 +3,29 @@
         <i class="tts__icon tts__icon__page--prev"></i>
     </div>
     <ul class="main__slider__pages">
-        <li class="slider__page slider__page__vfx slider__page--prev">
+        <li class="slider__page slider__page__vfx slider__page--prev" order='0'>
             <div class="page__box">
                 {% include "./_vfx.swig" with vfx %}
             </div>
         </li>
-        <li class="slider__page slider__page__origin slider__page--current">
+        <li class="slider__page slider__page__origin slider__page--current" order='1'>
             <div class="page__box">
                 {% include "./_origin.swig" with origin %}
             </div>
         </li>
-        <li class="slider__page slider__page__animation slider__page--next">
+        <li class="slider__page slider__page__animation slider__page--next" order='2'>
             <div class="page__box">
                 {% include "./_animation.swig" with animation %}
             </div>
         </li>
     </ul>
+    <ul class="slider__spots">
+        <li class="spot" order='0'></li>
+        <li class="spot current" order='1'></li>
+        <li class="spot" order="2"></li>
+    </ul>
     <div class="main__slider__btn main__slider__btn--next">
         <i class="tts__icon tts__icon__page--next"></i>
     </div>
 </div>
+{%include "./_footer.swig"%}

@@ -6,6 +6,24 @@
     // width: @main-width-normal;
     margin: 0 auto;
     position: relative;
+    .slider__spots{
+        position: absolute;
+        left: 50%;
+        bottom: -30px;
+        margin-left: -35px;
+        .spot{
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 10px;
+            width: 13px;
+            height: 13px;
+            background-color: @color-white;
+            .border-radius(50%);
+            &.current{
+                background-color: @color-origin;
+            }
+        }
+    }
     .main__slider__btn{
         cursor: pointer;
         width: 37px;
@@ -30,14 +48,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            &--prev{
-                left: -100%;
-            }
             &--current{
-                left: 0;
-            }
-            &--next{
-                left: 100%;
+                z-index: 10;
             }
             &__vfx{
                 @import "./_vfx.less";

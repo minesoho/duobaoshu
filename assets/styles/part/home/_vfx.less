@@ -4,10 +4,14 @@
     margin: 0 auto;
     position: relative;
     .vfx__more{
-        float: left;
+        position: absolute;
+        top: 0;
+        left: 0;
     }
     .vfx__main{
-        float: left;
+        position: absolute;
+        top: 0;
+        right: 0;
     }
     .vfx__list{
         overflow: hidden;
@@ -18,7 +22,20 @@
         left: 0;
     }
     .vtx__item{
-        float: left;
+        position: absolute;
+        top: 0;
+        width: @size-unit-normal;
+        height: @size-unit-normal;
+        overflow: hidden;
+        &--1{
+            left: 0;
+        }
+        &--2{
+            left: @size-unit-normal;
+        }
+        &--3{
+            right: 0;
+        }
     }
     .vfx__showcases{
         display: none;

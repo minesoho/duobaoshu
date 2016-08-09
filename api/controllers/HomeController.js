@@ -74,7 +74,7 @@ module.exports = {
             title: "多宝树影视科技",
             data: locals
         });
-        res.writeHead(200, {'content-type': 'text/html'});
+        // res.writeHead(200, {'content-type': 'text/html'});
         res.send(html);
     },
     admin: function(req,res){
