@@ -14,5 +14,6 @@
             {%include "./part/header/index.swig"%}
             {%include "./part/home/main.swig" with data%}
         </div>
+        <script src="/js/main.home.js" charset="utf-8"></script>
     </body>
 </html>

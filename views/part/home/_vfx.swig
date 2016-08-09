@@ -7,7 +7,7 @@
     </div>
     <ul class="vfx__list">
         {% for item in list%}
-            <li class="vtx__item">
+            <li class="vtx__item vtx__item--{{loop.index}}">
                 {%include './components/cube_item.swig' with item only%}
             </li>
         {% endfor %}

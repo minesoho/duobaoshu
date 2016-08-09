@@ -7,19 +7,8 @@
     </div>
     <ul class="origin__list">
         {% for item in list%}
-            <li class="list__item">
-                <div class="list__thumb">
-                    <img src="{{item.img}}" alt="{{item.title}}" />
-                </div>
-                <div class="list__entry">
-                    <div class="entry__cover"></div>
-                    <p class="entry__title">{{item.title}}</p>
-                    <p class="entry__subtitle">{{item.subtitle}}</p>
-                    <p class="entry__desc">{{item.desc}}</p>
-                    <div class="entry__action">
-                        <i class="tts__icon tts__icon__play"></i>
-                    </div>
-                </div>
+            <li class="origin__item origin__item--{{loop.index}}">
+                {%include './components/cube_item.swig' with item only%}
             </li>
         {%endfor%}
     </ul>

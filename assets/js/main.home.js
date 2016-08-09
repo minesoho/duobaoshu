@@ -6,6 +6,7 @@
     var lock_slide = false;
     var timer_slide = 1000;
     $(document).on('click','.main__slider__btn--prev',function(ev){
+        console.log('prev');
         if(lock_slide){
             return;
         }
@@ -26,6 +27,7 @@
             lock_slide = false;
         });
     }).on('click','.main__slider__btn--next',function(ev){
+        console.log('next');
         if(lock_slide){
             return;
         }

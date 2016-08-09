@@ -34,9 +34,9 @@ module.exports.routes = {
 
   'get /': 'HomeController.index',
 
-  '/admin': {
-      view: 'admin'
-  }
+  'get /admin': 'HomeController.admin',
+
+  'post /signin': 'UserController.signin'
 
   /***************************************************************************
   *                                                                          *

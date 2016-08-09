@@ -1,13 +1,39 @@
-.origin__more{
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-.origin__main{
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-.origin__showcases{
-    display: none;
+.page__origin{
+    .origin__more{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .origin__main{
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .origin__showcases{
+        display: none;
+    }
+    .origin__list{
+        overflow: hidden;
+        width: 100%;
+        height: @size-unit-normal;
+        position: absolute;
+        top: @size-unit-normal;
+        left: 0;
+    }
+    .origin__item{
+        position: absolute;
+        top: 0;
+        width: @size-unit-normal;
+        height: @size-unit-normal;
+        overflow: hidden;
+        &--1{
+            left: 0;
+        }
+        &--2{
+            left: @size-unit-normal;
+        }
+        &--3{
+            right: 0;
+        }
+    }
 }

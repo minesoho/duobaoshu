@@ -74,6 +74,16 @@ module.exports = {
             title: "多宝树影视科技",
             data: locals
         });
+        res.writeHead(200, {'content-type': 'text/html'});
+        res.send(html);
+    },
+    admin: function(req,res){
+        let html = '';
+        if(!req.session.login){
+            html = swig.renderFile('./views/auth.swig');
+        }else{
+            html = swig.renderFile('./views/admin.swig');
+        }
         res.send(html);
     }
 };

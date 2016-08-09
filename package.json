@@ -35,6 +35,10 @@
   "author": "anonymous node/sails user",
   "license": "",
   "devDependencies": {
+    "bcryptjs": "^2.3.0",
+    "lodash": "^4.14.2",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "swig": "^1.4.2"
   }
 }
