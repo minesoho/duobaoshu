@@ -20,12 +20,12 @@
             case _width < SCREEN_LARGE && _width >= SCREEN_NORMAL:
                 $body.removeClass(CLASS_H5).removeClass(CLASS_MINI).removeClass(CLASS_LARGE).addClass(CLASS_NORMAL);
                 break;
-            case _width < SCREEN_NORMAL && _width >= SCREEN_MINI:
+            case _width < SCREEN_NORMAL:// && _width >= SCREEN_MINI:
                 $body.removeClass(CLASS_H5).removeClass(CLASS_NORMAL).removeClass(CLASS_LARGE).addClass(CLASS_MINI);
                 break;
-            case _width <= SCREEN_H5:
-                $body.removeClass(CLASS_MINI).removeClass(CLASS_NORMAL).removeClass(CLASS_LARGE).addClass(CLASS_H5);
-                break;
+            // case _width <= SCREEN_H5:
+            //     $body.removeClass(CLASS_MINI).removeClass(CLASS_NORMAL).removeClass(CLASS_LARGE).addClass(CLASS_H5);
+            //     break;
             default:
                 break;
         }

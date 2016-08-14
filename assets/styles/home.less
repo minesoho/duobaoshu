@@ -53,6 +53,7 @@ body{
     .window{
         width: @window-width-normal;
         height: @window-height-normal;
+
     }
 }
 .body--large{
@@ -65,6 +66,7 @@ body{
         .tts__more{
             width: @size-unit-large;
             height: @size-unit-large;
+            padding-top: 100px;
         }
         .tts__main{
             width: @size-unit-large * 2;
@@ -73,6 +75,9 @@ body{
         .tts__item{
             width: @size-unit-large;
             height: @size-unit-large;
+        }
+        .slider__page {
+            height: @size-unit-large * 2;
         }
         .animation__list{
             height: @size-unit-large !important;
@@ -100,7 +105,7 @@ body{
             height: @size-unit-large !important;
             top: @size-unit-large !important;
         }
-        .vtx__item{
+        .vfx__item{
             width: @size-unit-large !important;
             height: @size-unit-large !important;
             &--2{
@@ -111,19 +116,46 @@ body{
 }
 .body--mini{
     .window{
-        width: @window-width-mini;
-        height: @window-height-mini;
+        width: @window-width-mini !important;
+        height: @window-height-mini !important;
+        .vfx__cover__item{
+            width: 49% !important;
+        }
         .tts__more{
-            width: @size-unit-mini;
-            height: @size-unit-mini;
+            width: @size-unit-mini !important;
+            height: @size-unit-mini !important;
+            z-index: 1;
         }
         .tts__main{
-            width: @size-unit-mini * 2;
-            height: @size-unit-mini;
+            width: @size-unit-mini * 2 !important;
+            height: @size-unit-mini !important;
         }
         .tts__item{
-            width: @size-unit-mini;
-            height: @size-unit-mini;
+            width: @size-unit-mini !important;
+            height: @size-unit-mini !important;
+        }
+        .slider__page {
+            height: @size-unit-mini * 2;
+        }
+        .animation__more,.vfx__more,.origin__more{
+            top: @size-unit-mini !important;
+        }
+        .vfx__more,.origin__more{
+            right: 0 !important;
+            left: inherit !important;
+        }
+        .animation__item,.vfx__item,.origin__item{
+            &--2,&--3{
+                display: none !important;
+            }
+        }
+        .head__box{
+            .box__logo{
+                margin-left: -100px;
+            }
+            .box__nav{
+                margin-right: -100px;
+            }
         }
     }
 }

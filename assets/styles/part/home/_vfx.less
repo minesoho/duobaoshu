@@ -1,8 +1,33 @@
 @showcase-width: (@window-width-normal - 20)/3;
 .page__vfx{
-    width: 99%;
+    height: 100%;
     margin: 0 auto;
     position: relative;
+    .page__vfx__cover{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        background-color: @color-grey;
+        overflow-x: hidden;
+        overflow-y: auto;
+        .vfx__cover__list{
+            width: 99%;
+            margin: 0 auto;
+        }
+        .vfx__cover__item{
+            width: 33%;
+            display: inline-block;
+            padding: 40px 25px 0 25px;
+            box-sizing: border-box;
+            img{
+                width: 100%;
+            }
+        }
+    }
     .vfx__more{
         position: absolute;
         top: 0;
@@ -21,7 +46,7 @@
         top: @size-unit-normal;
         left: 0;
     }
-    .vtx__item{
+    .vfx__item{
         position: absolute;
         top: 0;
         width: @size-unit-normal;

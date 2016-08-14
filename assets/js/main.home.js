@@ -67,5 +67,13 @@
             $next.removeClass(CLASS_NEXT).removeClass(CLASS_PREV);
             lock_slide = false;
         });
+    }).on('click','.origin__item--1',function(){
+        $('.page__origin__cover').show();
+    }).on('click','.page__origin__cover',function(){
+        $(this).hide();
+    }).on('click','.vfx__more',function(){
+        $('.page__vfx__cover').show();
+    }).on('click','.page__vfx__cover',function(){
+        $(this).hide();
     });
 })(window);
