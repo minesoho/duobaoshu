@@ -8,17 +8,27 @@
         <script src="/js/libs/jquery.min.js"></script>
     </head>
     <body>
+        <div class="bak__cover"></div>
         <div class="window">
             <div class="tts__auth">
+                <div class="auth__logo">
+                    <img src="/images/logo.png" alt="多宝树影视科技" />
+                </div>
                 <div class="auth__head">
                     管理员登录
                 </div>
                 <form class="auth__form" action="/signin" method="post">
-                    <label for="name">用户名:</label>
-                    <input type="text" name="name" placeholder="管理员用户名">
-                    <label for="pwd">密码:</label>
-                    <input type="text" name="pwd" placeholder="管理员密码">
-                    <button type="button" name="submit">登录</button>
+                    <div class="form__item form__item__name">
+                        <label class="form__label form__label__name" for="name">用户名：</label>
+                        <input type="text" class="form__input form__input__name" name="name" placeholder="管理员用户名">
+                    </div>
+                    <div class="form__item form__item__pwd">
+                        <label class="form__label form__label__pwd" for="pwd">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+                        <input type="text" class="form__input form__input__pwd" name="pwd" placeholder="管理员密码">
+                    </div>
+                    <div class="form__item form__item__submit">
+                        <button class="form__submit" type="button" name="submit">登录</button>
+                    </div>
                 </form>
             </div>
         </div>
