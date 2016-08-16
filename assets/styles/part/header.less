@@ -1,26 +1,21 @@
-@head-height-normal: 102px;
-@head-padding-top-normal: 60px;
-@head-padding-bottom-normal: 60px;
-
-@head-padding-left-mini: 60px;
-@head-padding-right-mini: 60px;
+@head-padding-top: 25px;
+@head-padding-bottom: 35px;
 
 .tts__head{
     position: relative;
-    height: @head-height-normal+@head-padding-bottom-normal+@head-padding-top-normal;
     .head__box{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: @head-height-normal;
-        padding-top: @head-padding-top-normal;
-        padding-bottom: @head-padding-bottom-normal;
+        padding-top: @head-padding-top;
+        padding-bottom: @head-padding-bottom;
         box-sizing: border-box;
+        &:after{
+            display: block;
+            content: '';
+            clear: both;
+        }
         .box__logo{
             float: left;
             img{
-                width: 300px;
+                width: 250px;
             }
         }
         .box__nav{
