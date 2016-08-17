@@ -17,20 +17,21 @@
                 <div class="auth__head">
                     管理员登录
                 </div>
-                <form class="auth__form" action="/signin" method="post">
+                <form class="auth__form" action="/signin" method="post" onsubmit="return false;">
                     <div class="form__item form__item__name">
                         <label class="form__label form__label__name" for="name">用户名：</label>
                         <input type="text" class="form__input form__input__name" name="name" placeholder="管理员用户名">
                     </div>
                     <div class="form__item form__item__pwd">
                         <label class="form__label form__label__pwd" for="pwd">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
-                        <input type="text" class="form__input form__input__pwd" name="pwd" placeholder="管理员密码">
+                        <input type="password" class="form__input form__input__pwd" name="pwd" placeholder="管理员密码">
                     </div>
                     <div class="form__item form__item__submit">
-                        <button class="form__submit" type="button" name="submit">登录</button>
+                        <input class="form__submit" type="submit" value="登录"></input>
                     </div>
                 </form>
             </div>
         </div>
+        <script src="/js/main.auth.js" charset="utf-8"></script>
     </body>
 </html>
