@@ -46,5 +46,30 @@ module.exports = {
             code: '100',
             msg: '登录成功'
         });
+    },
+    signup: function(req,res){
+        User.find().exec(function(err,users){
+            if(users&&users.length>0){
+                return res.json({
+                    code: '002',
+                    msg: '用户已存在'
+                });
+            }else{
+                var _user = {
+                    username: 'admin',
+                    password: 'ttsDuobaoshu'
+                };
+                User.create(_user).exec(function(err,user){
+                    if(err){
+                        console.log(err);
+                        return res.json({
+                            code: '500',
+                            msg: '数据库错误'
+                        });
+                    }
+                    console.log('用户创建成功');
+                });
+            }
+        });
     }
 };

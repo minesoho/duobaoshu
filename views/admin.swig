@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="window">
-        admin
+        {%include "./part/admin/main.swig"%}
         </div>
     </body>
 </html>

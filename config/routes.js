@@ -36,7 +36,9 @@ module.exports.routes = {
 
   'get /admin': 'HomeController.admin',
 
-  'post /signin': 'UserController.signin'
+  'post /signin': 'UserController.signin',
+  
+  'get /signup': 'UserController.signup'
 
   /***************************************************************************
   *                                                                          *
