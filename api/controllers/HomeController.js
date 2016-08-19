@@ -1,9 +1,9 @@
 'use strict';
 
-var swig = require('swig');
+let swig = require('swig');
 let _ = require('lodash');
 
-var _mock = require('./mock.json');
+let _mock = require('./mock.json');
 
 module.exports = {
     index: function(req,res){

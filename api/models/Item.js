@@ -18,6 +18,12 @@ module.exports = {
         },
         desc: {
             type: 'string'
+        },
+        detail: {
+            type: 'object',
+            // defaultTo: {
+            //     type: '', //video OR info
+            // }
         }
     }
 };

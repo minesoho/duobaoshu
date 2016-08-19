@@ -37,8 +37,15 @@ module.exports.routes = {
   'get /admin': 'HomeController.admin',
 
   'post /signin': 'UserController.signin',
-  
-  'get /signup': 'UserController.signup'
+
+  'get /signup': 'UserController.signup',
+
+  'post /vfxMain': 'AdminController.setVfxMain',
+  'post /vfxItems': 'AdminController.setVfxItems',
+  'post /animationMain': 'AdminController.setAnimationMain',
+  'post /animationItems': 'AdminController.setAnimationItems',
+  'post /originMain': 'AdminController.setOriginMain',
+  'post /originItems': 'AdminController.setOriginItems',
 
   /***************************************************************************
   *                                                                          *
