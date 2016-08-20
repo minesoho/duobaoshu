@@ -11,5 +11,6 @@
         <div class="window">
         {%include "./part/admin/main.swig"%}
         </div>
+        <script src="/js/main.admin.js"></script>
     </body>
 </html>

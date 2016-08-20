@@ -1,1 +1,157 @@
 @import './common/base.less';
+.admin__main{
+    padding-left: 250px;
+    .admin__main__sidebar{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 250px;
+        background-color: #191919;
+        box-sizing: border-box;
+        padding: 40px;
+        color: #989A9C;
+        .sidebar__head{
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        .sidebar__body{
+            padding-left: 25px;
+        }
+        .body__item {
+            font-size: 16px;
+            height: 50px;
+            line-height: 50px;
+            cursor: pointer;
+            &:hover,&.current{
+                color: #fff;
+            }
+        }
+    }
+    .admin__main__panels{
+        .panel__head{
+            height: 50px;
+            line-height: 50px;
+            background-color: #191919;
+            color: #989A9C;
+            padding-left: 20px;
+        }
+        .panel__body{
+            padding: 30px;
+        }
+        .panels__item {
+            display: none;
+            &.current{
+                display: block;
+            }
+        }
+        .form__item{
+            margin: 10px 0;
+            &__image{
+                .form__input{
+                    width: inherit;
+                }
+                .upload__btn {
+                    display: inline-block;
+                    height: 24px;
+                    line-height: 24px;
+                    box-sizing: border-box;
+                    font-size: 16px;
+                    padding: 0 10px;
+                    border-radius: 4px;
+                }
+            }
+            &__submit{
+                text-align: center;
+            }
+            &__cover{
+                .body__item{
+                    margin: 10px 0;
+                    padding: 10px;
+                    background-color: lightgray;
+                }
+                .info__list{
+                    display: inline-block;
+                    vertical-align: top;
+                }
+                .info__item {
+                    display: inline-block;
+                    vertical-align: top;
+                    width: 300px;
+                    height: 200px;
+                    border: solid 1px darkgray;
+                    margin-right: 30px;
+                    text-align: center;
+                    background-color: #fff;
+                    padding: 20px;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    &.current{
+                        border-color: #000;
+                    }
+                    &__vertical{
+                        .info__desc{
+                            margin-bottom: 20px;
+                            height: 45px;
+                            line-height: 45px;
+                        }
+                        .info__img{
+                            height: 92px;
+                            line-height: 92px;
+                        }
+                    }
+                    &__horizontal{
+                        text-align: left;
+                        .info__desc{
+                            display: inline-block;
+                            vertical-align: top;
+                            height: 100%;
+                            width: 120px;
+                            margin-right: 10px;
+                            text-align: center;
+                            line-height: 160px;
+                        }
+                        .info__img{
+                            display: inline-block;
+                            vertical-align: top;
+                            width: 120px;
+                            height: 100%;
+                            text-align: center;
+                            line-height: 160px;
+                        }
+                    }
+                }
+                .info__desc,.info__img {
+                    background-color: lightgray;
+                }
+            }
+        }
+        .form__label{
+            width: 80px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .form__input{
+            width: 80%;
+        }
+        .body__item{
+            .item__head{
+                font-size: 20px;
+                position: relative;
+                &:after{
+                    content: '';
+                    display: block;
+                    background-color: #191919;
+                    height: 1px;
+                    position: absolute;
+                    top: 50%;
+                    left: 90px;
+                    width: 400px;
+                }
+            }
+            .item__body{
+                padding-left: 20px;
+            }
+        }
+    }
+}
