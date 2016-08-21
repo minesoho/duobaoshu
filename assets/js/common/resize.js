@@ -25,6 +25,7 @@
                 break;
             case _width < SCREEN_MINI:
                 $body.removeClass(CLASS_MINI).removeClass(CLASS_NORMAL).removeClass(CLASS_LARGE).addClass(CLASS_H5);
+                $('html').height('100%');
                 break;
             default:
                 break;
