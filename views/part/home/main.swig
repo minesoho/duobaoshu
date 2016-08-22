@@ -4,7 +4,7 @@
         <i class="tts__icon tts__icon__page--prev"></i>
     </div>
     <ul class="main__slider__pages">
-        <div class="slider__cover step0">
+        <div class="slider__cover step1">
             <li class="slider__page slider__page__vfx slider__page--prev" order='0'>
                 <div class="page__box">
                     {% include "./_vfx.swig" with vfx %}

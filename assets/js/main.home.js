@@ -13,7 +13,68 @@
     var $spotBox = $('.slider__spots');
     var $spots = $spotBox.find('.spot');
 
-    $(document).on('click','.main__slider__btn--prev',function(ev){
+    var swipe_start = null,swipe_end = null;
+
+    var SWIPE_STEP = 30;
+
+    function nextSwipePage(){
+        if(lock_slide){
+            return;
+        }
+        lock_slide = true;
+        var $cover = $('.main__slider__pages .slider__cover');
+        if($cover.hasClass('step0')){
+            $cover.removeClass('step0').addClass('step1');
+            $pages.removeClass(CLASS_CURRENT);
+            $pageBox.find('.slider__page[order="1"]').addClass(CLASS_CURRENT);
+            $spots.removeClass('current');
+            $spotBox.find('.spot[order="1"]').addClass('current');
+            lock_slide = false;
+        }else if($cover.hasClass('step1')){
+            $cover.removeClass('step1').addClass('step2');
+            $pages.removeClass('current');
+            $pageBox.find('.slider__page[order="2"]').addClass(CLASS_CURRENT);
+            $spots.removeClass('current');
+            $spotBox.find('.spot[order="2"]').addClass('current');
+            $('.main__slider__btn--next').hide();
+            lock_slide = false;
+        }else{
+            lock_slide = false;
+            return;
+        }
+    }
+
+    function prevSwipePage(){
+        if(lock_slide){
+            return;
+        }
+        lock_slide = true;
+        var $cover = $('.main__slider__pages .slider__cover');
+        if($cover.hasClass('step2')){
+            $cover.removeClass('step2').addClass('step1');
+            $pages.removeClass(CLASS_CURRENT);
+            $pageBox.find('.slider__page[order="1"]').addClass(CLASS_CURRENT);
+            $spots.removeClass('current');
+            $spotBox.find('.spot[order="1"]').addClass('current');
+            $('.main__slider__btn--next').show();
+            lock_slide = false;
+        }else if($cover.hasClass('step1')){
+            $cover.removeClass('step1').addClass('step0');
+            $pages.removeClass(CLASS_CURRENT);
+            $pageBox.find('.slider__page[order="0"]').addClass(CLASS_CURRENT);
+            $spots.removeClass('current');
+            $spotBox.find('.spot[order="0"]').addClass('current');
+            lock_slide = false;
+        }else{
+            lock_slide = false;
+            return;
+        }
+    }
+
+    $(document).on('touchmove','.body--h5',function(e){
+        e.preventDefault();
+        return false;
+    }).on('click','.main__slider__btn--prev',function(ev){
         if(lock_slide){
             return;
         }
@@ -91,5 +152,19 @@
         $('.page__vfx__cover').show();
     }).on('click','.page__vfx__cover',function(){
         $(this).hide();
+    }).on('touchstart','.slider__cover',function(event){
+        var ev = event||window.event;
+        swipe_start = ev.originalEvent.touches[0].screenY;
+    }).on('touchend','.slider__cover',function(event){
+        var ev = event||window.event;
+        swipe_end = ev.originalEvent.changedTouches[0].screenY;
+        if(swipe_end > swipe_start && swipe_end - swipe_start >= SWIPE_STEP){
+            prevSwipePage();
+        }else if(swipe_end < swipe_start && swipe_start - swipe_end >= SWIPE_STEP){
+            nextSwipePage();
+        }else{
+            swipe_start = null;
+            swipe_end = null;
+        }
     });
 })(window);
