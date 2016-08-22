@@ -25,7 +25,7 @@
   "scripts": {
     "debug": "node debug app.js",
     "start": "node app.js",
-    "deploy": "node app.js --prod"
+    "deploy": "sudo pm2 start app.js -x -- --prod"
   },
   "main": "app.js",
   "repository": {

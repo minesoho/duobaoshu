@@ -46,13 +46,16 @@
         lock_slide = true;
 
         if($(this).parents('.body--h5').length !==0){
-            console.log('h5 next');
             var $cover = $('.main__slider__pages .slider__cover');
             if($cover.hasClass('step0')){
                 $cover.removeClass('step0').addClass('step1');
+                $spots.removeClass('current');
+                $spotBox.find('.spot[order="1"]').addClass('current');
                 lock_slide = false;
             }else if($cover.hasClass('step1')){
                 $cover.removeClass('step1').addClass('step2');
+                $spots.removeClass('current');
+                $spotBox.find('.spot[order="2"]').addClass('current');
                 $(this).hide();
                 lock_slide = false;
             }
