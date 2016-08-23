@@ -1,5 +1,6 @@
 <div class="tts__main">
     <div class="main__thumb">
+        <img class="thumb__cover" src='/images/bg_cover.png'/>
         <img src="{{img}}" alt="{{title}}" />
     </div>
     <div class="main__entry">

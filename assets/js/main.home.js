@@ -13,6 +13,8 @@
     var $spotBox = $('.slider__spots');
     var $spots = $spotBox.find('.spot');
 
+    var $pageEntryCover = $('.page__entry__cover');
+
     var swipe_start = null,swipe_end = null;
 
     var SWIPE_STEP = 30;
@@ -144,14 +146,17 @@
             });
         }
 
-    }).on('click','.origin__item--1',function(){
-        $('.page__origin__cover').show();
-    }).on('click','.page__origin__cover',function(){
+    }).on('click','.page__entry__cover',function(){
         $(this).hide();
-    }).on('click','.vfx__more',function(){
-        $('.page__vfx__cover').show();
-    }).on('click','.page__vfx__cover',function(){
-        $(this).hide();
+    }).on('click','.tts__item',function(){
+        if($(this).find('.item__entry').length === 0){
+            return;
+        }
+        var _entry = $(this).find('.item__entry__info');
+        if(_entry.length!==0){
+            var _html = _entry.html();
+            $pageEntryCover.html(_html).show();
+        }
     }).on('touchstart','.slider__cover',function(event){
         var ev = event||window.event;
         swipe_start = ev.originalEvent.touches[0].screenY;

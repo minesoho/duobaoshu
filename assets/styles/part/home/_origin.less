@@ -7,21 +7,25 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: @color-grey;
         z-index: 10;
-        box-sizing: border-box;
-        padding: 60px 90px;
-        .origin__cover__desc{
-            font-size: 20px;
-            margin-bottom: 40px;
-            line-height: 150%;
+        background-color: @color-grey;
+        overflow-x: hidden;
+        overflow-y: auto;
+        .origin__cover__list{
+            width: 99%;
+            margin: 0 auto;
         }
-        .origin__cover__thumb{
+        .origin__cover__item{
+            width: 33%;
+            display: inline-block;
+            padding: 40px 25px 0 25px;
+            box-sizing: border-box;
             img{
                 width: 100%;
             }
         }
     }
+
     .origin__more{
         position: absolute;
         top: 0;
@@ -38,7 +42,7 @@
     .origin__list{
         overflow: hidden;
         width: 100%;
-        height: @size-unit-normal;
+        height: @size-unit-normal*0.9;
         position: absolute;
         top: @size-unit-normal*0.9;
         left: 0;

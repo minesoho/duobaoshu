@@ -1,4 +1,26 @@
 <div class="page__animation clearfix">
+    <div class="page__animation__cover">
+        <ul class="animation__cover__list">
+            <li class="animation__cover__item">
+                <img src="/images/test/animation_item_1.jpg" alt="" />
+            </li>
+            <li class="animation__cover__item">
+                <img src="/images/test/animation_item_1.jpg" alt="" />
+            </li>
+            <li class="animation__cover__item">
+                <img src="/images/test/animation_item_1.jpg" alt="" />
+            </li>
+            <li class="animation__cover__item">
+                <img src="/images/test/animation_item_1.jpg" alt="" />
+            </li>
+            <li class="animation__cover__item">
+                <img src="/images/test/animation_item_1.jpg" alt="" />
+            </li>
+            <li class="animation__cover__item">
+                <img src="/images/test/animation_item_1.jpg" alt="" />
+            </li>
+        </ul>
+    </div>
     <div class="animation__main">
         {%include './components/cube_main.swig' with main only%}
     </div>

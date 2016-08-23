@@ -70,6 +70,17 @@ module.exports = {
         //     origin
         // });
         locals = _mock;
+
+        for(let key in locals){
+            if(locals[key].list.length < 3){
+                for(let i=0,len=3-locals[key].list.length;i<len;i++){
+                    locals[key].list.push({
+                        img:'/images/blank.jpg',
+                        blank: true
+                    });
+                }
+            }
+        }
         let html = swig.renderFile('./views/home.swig',{
             title: "多宝树影视科技",
             data: locals

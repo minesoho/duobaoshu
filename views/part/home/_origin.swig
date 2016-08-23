@@ -1,11 +1,25 @@
 <div class="page__origin clearfix">
     <div class="page__origin__cover">
-        <div class="origin__cover__desc">
-            多宝猴是我们公司制作的微信表情之一，目前已推出了第二套表情包。我们团队会在将来推出更多的优秀的动画形象。 这是一只淘气，古灵精怪又可爱的小猴子。他的猴生信条就是“不捣蛋，不成活”
-        </div>
-        <div class="origin__cover__thumb">
-            <img src="/images/test/origin_alert.png" alt="" />
-        </div>
+        <ul class="origin__cover__list">
+            <li class="origin__cover__item">
+                <img src="/images/test/origin_item_1.jpg" alt="" />
+            </li>
+            <li class="origin__cover__item">
+                <img src="/images/test/origin_item_1.jpg" alt="" />
+            </li>
+            <li class="origin__cover__item">
+                <img src="/images/test/origin_item_1.jpg" alt="" />
+            </li>
+            <li class="origin__cover__item">
+                <img src="/images/test/origin_item_1.jpg" alt="" />
+            </li>
+            <li class="origin__cover__item">
+                <img src="/images/test/origin_item_1.jpg" alt="" />
+            </li>
+            <li class="origin__cover__item">
+                <img src="/images/test/origin_item_1.jpg" alt="" />
+            </li>
+        </ul>
     </div>
     <div class="origin__more">
         {%include './components/cube_more.swig' with more only%}
