@@ -84,9 +84,9 @@
             "subtitle": "Monky",
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
             "showcase": {
-                "type": "across",
+                "type": "info--updown",
                 "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
-                "img": "/images/test/origin_showcase_1.jpg"
+                "img": "/images/test/origin_alert.png"
             }
         }]
     }
