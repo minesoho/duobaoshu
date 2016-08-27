@@ -1,6 +1,6 @@
 <div class="panels__item panels__item__vfx current" data-page='vfx'>
     <div class="panel__head">
-        页面配置 > 首页1-视觉特效
+        页面配置 > 视觉特效 - 首页
     </div>
     <div class="panel__body">
         <ul class="body__list">

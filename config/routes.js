@@ -31,25 +31,34 @@ module.exports.routes = {
   * `assets` directory)                                                      *
   *                                                                          *
   ***************************************************************************/
-
+  // 首页展示
   'get /': 'HomeController.index',
-
+  // 管理后台展示
   'get /admin': 'HomeController.admin',
-
+  // 登录api
   'post /signin': 'UserController.signin',
+  // 伪注册api
   'get /signup': 'UserController.signup',
-
+  // 上传图片api
   'post /uploadImage': 'FileController.uploadImage',
 
+  // vfx大图
   'post /vfxMain': 'AdminController.setVfxMain',
-  'post /vfxItems': 'AdminController.setVfxItems',
+  // vfx首页展示items
+  'post /vfxItem': 'AdminController.setVfxItem',
+  // vfx title
   'post /vfxTitles': 'AdminController.setVfxTitles',
+  // vfx showcase
+  'post /vfxShowcase': 'AdminController.setVfxShowcase',
+  'get /vfxShowcases': 'AdminController.getVfxShowcases',
 
   'post /animationMain': 'AdminController.setAnimationMain',
-  'post /animationItems': 'AdminController.setAnimationItems',
+  'post /animationItem': 'AdminController.setAnimationItem',
+  'post /animationTitles': 'AdminController.setAnimationTitles',
 
   'post /originMain': 'AdminController.setOriginMain',
-  'post /originItems': 'AdminController.setOriginItems',
+  'post /originItem': 'AdminController.setOriginItem',
+  'post /originTitles': 'AdminController.setOriginTitles',
 
   /***************************************************************************
   *                                                                          *

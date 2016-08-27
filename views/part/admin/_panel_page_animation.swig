@@ -1,6 +1,6 @@
 <div class="panels__item panels__item__animation" data-page='animation'>
     <div class="panel__head">
-        页面配置 > 首页2-动画作品
+        页面配置 > 动画作品 - 首页
     </div>
     <div class="panel__body">
         <ul class="body__list">

@@ -4,8 +4,7 @@ module.exports = {
             type: 'string'
         },
         index: {
-            type: 'integer',
-            autoIncrement: true
+            type: 'integer'
         },
         title: {
             type: 'string'

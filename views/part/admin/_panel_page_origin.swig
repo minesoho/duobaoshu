@@ -1,6 +1,6 @@
 <div class="panels__item panels__item__origin" data-page='origin'>
     <div class="panel__head">
-        页面配置 > 首页3-原创作品
+        页面配置 > 原创作品 - 首页
     </div>
     <div class="panel__body">
         <ul class="body__list">

@@ -38,6 +38,7 @@
     "lodash": "^4.14.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "sails": "^0.12.4",
     "sails-mongo": "^0.12.1",
     "swig": "^1.4.2"
   }
