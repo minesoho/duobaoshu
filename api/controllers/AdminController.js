@@ -9,7 +9,11 @@ module.exports = {
             msg: '参数为空'
         });
       }
-      let _data = Object.assign({},req.params);
+      let _data = {};
+      req.param('title')&&(_data.title = req.param('title'));
+      req.param('subtitle')&&(_data.subtitle = req.param('subtitle'));
+      req.param('desc')&&(_data.desc = req.param('desc'));
+
       Main.find({
         moduleType: 'vfx'
       }).exec(function(err,items){

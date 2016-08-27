@@ -24,6 +24,7 @@
             return;
         }
         lock_slide = true;
+        $('.page__entry__cover').hide();
         var $cover = $('.main__slider__pages .slider__cover');
         if($cover.hasClass('step0')){
             $cover.removeClass('step0').addClass('step1');
@@ -51,6 +52,7 @@
             return;
         }
         lock_slide = true;
+        $('.page__entry__cover').hide();
         var $cover = $('.main__slider__pages .slider__cover');
         if($cover.hasClass('step2')){
             $cover.removeClass('step2').addClass('step1');
@@ -81,6 +83,7 @@
             return;
         }
         lock_slide = true;
+        $('.page__entry__cover').hide();
         var $current = $('.'+CLASS_CURRENT);
         var curOrder = parseInt($current.attr('order'));
         var prevOrder = curOrder === 0?page_sum-1:curOrder-1;
@@ -107,7 +110,7 @@
             return;
         }
         lock_slide = true;
-
+        $('.page__entry__cover').hide();
         if($(this).parents('.body--h5').length !==0){
             var $cover = $('.main__slider__pages .slider__cover');
             if($cover.hasClass('step0')){
@@ -149,14 +152,28 @@
     }).on('click','.page__entry__cover',function(){
         $(this).hide();
     }).on('click','.tts__item',function(){
-        if($(this).find('.item__entry').length === 0){
-            return;
+        var $this = $(this);
+        var _type = $this.data('dtype');
+        if(_type == 'video'){
+          var _vid = $this.find('.item__entry__video').data('videoid');
+          $pageEntryCover.html('<div id="youkuplayer" style=""></div>').show();
+          player = new YKU.Player('youkuplayer',{
+            styleid: '0',
+            client_id: '58fa8f58142b191f',
+            vid: _vid,
+            newPlayer: true
+          });
+        }else{
+          if($(this).find('.item__entry').length === 0){
+              return;
+          }
+          var _entry = $(this).find('.item__entry__info');
+          if(_entry.length!==0){
+              var _html = _entry.html();
+              $pageEntryCover.html(_html).show();
+          }
         }
-        var _entry = $(this).find('.item__entry__info');
-        if(_entry.length!==0){
-            var _html = _entry.html();
-            $pageEntryCover.html(_html).show();
-        }
+
     }).on('touchstart','.slider__cover',function(event){
         var ev = event||window.event;
         swipe_start = ev.originalEvent.touches[0].screenY;
@@ -171,5 +188,7 @@
             swipe_start = null;
             swipe_end = null;
         }
+    }).on('click','.vfx__more',function(){
+      $('.vfx__showcases').show();
     });
 })(window);

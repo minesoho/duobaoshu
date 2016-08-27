@@ -8,4 +8,5 @@
     {% include "./_panel_about.swig" %}
     {% include "./_panel_concact.swig" %}
     {% include "./_panel_jobs.swig" %}
+    {% include "./__editshowcase.swig" %}
 </div>

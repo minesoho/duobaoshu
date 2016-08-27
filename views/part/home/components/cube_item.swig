@@ -1,4 +1,4 @@
-<div class="tts__item">
+<div class="tts__item" data-dtype='{{showcase.type}}'>
     <div class="item__thumb">
         <img class="thumb__cover" src='/images/bg_cover.png'/>
         <img src="{{img}}" alt="{{title}}" />
@@ -26,9 +26,13 @@
         </div>
     </div>
     {% if showcase%}
-    <div class="item__entry__info">
-    {% include "./entry_cover_info.swig" with showcase only %}
-    </div>
+      {% if showcase.type == 'video' %}
+        <div class="item__entry__video" data-videoId='{{showcase.videoId}}'></div>
+      {% else%}
+      <div class="item__entry__info">
+        {% include "./entry_cover_info.swig" with showcase only %}
+      </div>
+    {%endif%}
     {% endif %}
     {% endif %}
 </div>

@@ -1,10 +1,22 @@
-$(function($, window) {
+$(function() {
+  window.onFileUploaded = function(res){
+    console.log('onFileUploaded')
+    if(!res||!res.targetId){
+      return;
+    }
 
+    var $box = $('#'+res.targetId);
+    $box.addClass('done');
+    $box.find('.form__area__hidden').attr('imgsrc',res.fd);
+  }
   var apis = {
     title: {
       vfx: '/vfxTitles',
       animation: '/animationTitles',
       origin: '/originTitles'
+    },
+    main: {
+      vfx: '/vfxMain'
     },
     showcase: {
       get: {
@@ -32,14 +44,16 @@ $(function($, window) {
     var html = [];
     for (var i = 0, len = data.length; i < len; i++) {
       var _li = [
-        '<li class="showcase__item showcase__item__normal" data-module=\'' + module + '\' id=\'' + data[i].id + '\'>',
+        '<li class="showcase__item showcase__item__normal" data-module=\'' + module + '\' data-id=\'' + data[i].id + '\'>',
         '<div class="showcase__thumb">',
         '<img src="' + data[i].img + '" />',
         '</div>',
         '<div class="showcase__entry">',
         data[i].title,
         '</div>',
-        '<div class="showcase__cover">编辑</div>',
+        '<div class="showcase__cover">',
+        '<div class="cover__action cover__actio--edit">编辑</div>',
+        '</div>',
         '</li>'
       ].join('');
       html.push(_li);
@@ -73,8 +87,8 @@ $(function($, window) {
         if (!res || res.code !== '100') {
           return alert('请求失败');
         }
-        let _data = res.data;
-        let _html = showcaseHtml(_data, module);
+        var _data = res.data;
+        var _html = showcaseHtml(_data, module);
         $box.append($(_html));
       }
     });
@@ -125,7 +139,34 @@ $(function($, window) {
     if (!module) {
       return;
     }
+    var $box = $('.panels__item__'+module+' .body__item__main');
     var _data = {};
+    var _title = $box.find('.form__input[name="title"]')[0].value,
+    _subtitle = $box.find('.form__input[name="subtitle"]')[0].value,
+    _desc = $box.find('.form__input[name="shortcut"]')[0].value,
+    _coverImg = $box.find('.form__item__image .form__area__hidden').attr('imgsrc');
+
+    _data.title = _title || null;
+    _data.subtitle = _subtitle || null;
+    _data.desc = _desc || null;
+    _data.coverImg = _coverImg || null;
+
+    $.ajax({
+      url: apis.main[module],
+      dataType: 'jsonp',
+      method: 'post',
+      data: _data,
+      seccess: function(res){
+        if(!res||res.code !== '100'){
+          alert('操作失败');
+        }else{
+          alert('保存成功');
+        }
+      },
+      error: function(){
+        alert('保存成功');
+      }
+    });
   }
 
   $sidebar.on('click', '.sidebar__body .body__item', showPanelByItem);
@@ -145,14 +186,28 @@ $(function($, window) {
   });
 
   $(document).on('click', '.panel__body__showcase .showmore', function(e) {
-    var $this = $(this);
-    var module = $this.data('module');
-    var $box = $this.parents('.panel__body__showcase').find('.showcase__list');
-    var page = $this.data('page') && parseInt($this.data('page')) || 0;
-    var query = page === 0 ? null : {
-      page: page
-    };
-    renderShowcases($box, apis.showcase.get[module], query);
-    $this.data('page', ++page);
-  });
-})
+        return;
+        var $this = $(this);
+        var module = $this.data('module');
+        var $box = $this.parents('.panel__body__showcase').find('.showcase__list');
+        var page = $this.data('page') && parseInt($this.data('page')) || 0;
+        var query = page === 0 ? null : {
+          page: page
+        };
+        renderShowcases($box, apis.showcase.get[module], query);
+        $this.data('page', ++page);
+    }).on('click','.panel__body__showcase .showcase__item',function(){
+        var $this = $(this);
+        var module = $this.data('module');
+        var id=$this.data('id');
+        $('.showcase__edit__panel').attr('_module',module).attr('_id',id).addClass('show');
+    }).on('click','.showcase__edit__panel .close__btn',function(){
+        $('.showcase__edit__panel').removeClass('show').attr('_module','').attr('_id','');
+    }).on('click','.form__item__cover .info__item',function(){
+      if($(this).hasClass('current')){
+        return;
+      }
+      $(this).addClass('current');
+      $(this).siblings('.info__item').removeClass('current');
+    });
+});

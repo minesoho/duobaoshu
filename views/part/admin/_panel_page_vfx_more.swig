@@ -15,10 +15,10 @@
             标题
           </div>
           <div class="showcase__cover">
-            编辑
+            <div class="cover__action cover__actio--edit">编辑</div>
           </div>
         </li>
       </ul>
-      <div class="showmore" data-page='1' data-module='vfx'>查看更多</div>
+      {# <div class="showmore" data-page='1' data-module='vfx'>查看更多</div> #}
     </div>
 </div>

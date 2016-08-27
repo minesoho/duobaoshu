@@ -4,20 +4,20 @@
         <input class="form__input" type="text" name="title" value="">
     </div>
     <div class="form__item">
-        <label class="form__label" for="title">副标题：</label>
-        <input class="form__input" type="text" name="title" value="">
+        <label class="form__label" for="subtitle">副标题：</label>
+        <input class="form__input" type="text" name="subtitle" value="">
     </div>
     <div class="form__item">
         <label class="form__label" for="shortcut">作品简介：</label>
         <textarea  class="form__input" name="shortcut" rows="8" cols="40"></textarea>
     </div>
     <div class="form__item__image">
-        <form action="/uploadImage?targetId={{ formId }}&callback=parent.alert('图片上传成功')" method="post" target='uploadImageIfr' enctype='multipart/form-data'>
+        <form id='{{ formId }}' action="/uploadImage?targetId={{ formId }}&callback=parent.onFileUploaded" method="post" target='uploadImageIfr' enctype='multipart/form-data'>
             <label class="form__label" for="cover">封面图片：</label>
-            <input class="form__input" type="file" name="uploadFile" placeholder="选择本地图片">
-            <input type="submit" class="upload__btn tts__btn" value="上传">
+            <input class="form__input form__input--img" type="file" name="uploadFile" placeholder="选择本地图片">
+            <input class="form__input form__input--submit" type="submit" class="upload__btn tts__btn" value="上传">
+            <div class="form__area__hidden">上传成功！</div>
         </form>
-        <input id="{{ formId }}" type="text" name="coverimage" value="">
     </div>
     <div class="form__item form__item__cover">
         <div class="title">
@@ -56,11 +56,12 @@
                     <label class="form__label" for="infodesc">文案：</label>
                     <textarea  class="form__input" name="infodesc" rows="8" cols="40"></textarea>
                 </div>
-                <div class="form__item">
+                <div id='{{ formId }}_showcase' class="form__item form__item__image">
                     <label class="form__label" for="infoimg">图片：</label>
                     <input class="form__input" type="file" name="infoimg" placeholder="选择本地图片">
                     <input type="radio" name="showtype" value="info">
                     <label for="showtype">显示此项</label>
+                    <div class="form__area__hidden">上传成功！</div>
                 </div>
             </div>
         </div>

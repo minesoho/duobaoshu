@@ -2,7 +2,4 @@
   <div class="action__title">
     添加
   </div>
-  <div class="action__logo">
-    +
-  </div>
 </div>

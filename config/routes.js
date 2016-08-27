@@ -55,10 +55,14 @@ module.exports.routes = {
   'post /animationMain': 'AdminController.setAnimationMain',
   'post /animationItem': 'AdminController.setAnimationItem',
   'post /animationTitles': 'AdminController.setAnimationTitles',
+  // 'post /animationShowcase': 'AdminController.setAnimationShowcase',
+  // 'get /animationShowcases': 'AdminController.getAnimationShowcases',
 
   'post /originMain': 'AdminController.setOriginMain',
   'post /originItem': 'AdminController.setOriginItem',
   'post /originTitles': 'AdminController.setOriginTitles',
+  // 'post /originShowcase': 'AdminController.setOriginShowcase',
+  // 'get /originShowcases': 'AdminController.getOriginShowcases',
 
   /***************************************************************************
   *                                                                          *

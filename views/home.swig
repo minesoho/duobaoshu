@@ -15,5 +15,6 @@
             {%include "./part/home/main.swig" with data%}
         </div>
         <script src="/js/main.home.js" charset="utf-8"></script>
+        <script type="text/javascript" src="http://player.youku.com/jsapi"></script>
     </body>
 </html>

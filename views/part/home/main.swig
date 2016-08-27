@@ -7,6 +7,7 @@
         <div class="page__entry__cover">
 
         </div>
+        <div class="page__video__cover"></div>
         <div class="slider__cover step1">
             <li class="slider__page slider__page__vfx slider__page--prev" order='0'>
                 <div class="page__box">

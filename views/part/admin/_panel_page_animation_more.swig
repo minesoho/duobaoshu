@@ -6,6 +6,6 @@
       <ul class="showcase__list">
 
       </ul>
-      <div class="showmore">查看更多</div>
+      {# <div class="showmore">查看更多</div> #}
     </div>
 </div>

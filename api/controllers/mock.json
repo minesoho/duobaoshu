@@ -13,23 +13,15 @@
             "href": ""
         },
         "list": [{
-            "img": "/images/test/vfx_1.jpg",
-            "title": "赛德克·巴莱",
-            "subtitle": "Seediq.Bale",
-            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
-            "href": ""
-        },{
-            "img": "/images/test/vfx_2.jpg",
-            "title": "赛德克·巴莱",
-            "subtitle": "Seediq.Bale",
-            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
-            "href": ""
-        },{
             "img": "/images/test/vfx_3.jpg",
-            "title": "赛德克·巴莱",
-            "subtitle": "Seediq.Bale",
+            "title": "天台",
+            "subtitle": "周杰伦",
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
-            "href": ""
+            "href": "",
+            "showcase": {
+              "type": "video",
+              "videoId": "XMTcwMDMwNjIyNA=="
+            }
         }]
     },
     "animation": {
@@ -45,25 +37,7 @@
             "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
             "href": ""
         },
-        "list": [{
-            "img": "/images/test/vfx_1.jpg",
-            "title": "赛德克·巴莱",
-            "subtitle": "Seediq.Bale",
-            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
-            "href": ""
-        },{
-            "img": "/images/test/vfx_2.jpg",
-            "title": "赛德克·巴莱",
-            "subtitle": "Seediq.Bale",
-            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
-            "href": ""
-        },{
-            "img": "/images/test/vfx_3.jpg",
-            "title": "赛德克·巴莱",
-            "subtitle": "Seediq.Bale",
-            "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
-            "href": ""
-        }]
+        "list": []
     },
     "origin": {
         "more": {

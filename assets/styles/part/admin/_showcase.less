@@ -7,5 +7,91 @@
     overflow: hidden;
     display: inline-block;
     vertical-align: middle;
+    position: relative;
+    &:hover{
+        .showcase__cover{
+            display: block;
+        }
+    }
+    &__add{
+        border: 1px #000 dotted;
+        box-sizing: border-box;
+        .showcase__action {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            margin-top: -15px;
+            cursor: pointer;
+            width: 80%;
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px #000 dotted;
+            &:hover{
+                background-color: #000;
+                color: #fff;
+            }
+        }
+    }
+    .showcase__thumb{
+        img{
+            width: 100%;
+        }
+    }
+    .showcase__cover{
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-color: #000;
+        opacity: 0.6;
+        color: #fff;
+        text-align: center;
+        .cover__action{
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            margin-top: -15px;
+            cursor: pointer;
+            width: 80%;
+            height: 30px;
+            font-size: 20px;
+            line-height: 30px;
+            border: 1px #fff dotted;
+            &:hover{
+                background-color: #fff;
+                color: #000;
+            }
+        }
+    }
   }
+}
+.showcase__edit__panel{
+    position: fixed;
+    top: 50%;
+    right: -100%;
+    background-color: #fff;
+    border: solid lightgrey 10px;
+    padding: 20px;
+    transform: translate(0,-50%);
+    max-height: 80%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    transition: all 1s ease-in-out;
+    z-index: 100;
+    &.show{
+        right: 0;
+    }
+    .close__btn{
+        position: absolute;
+        top: 0px;
+        left: 5px;
+        font-size: 20px;
+        color: red;
+        cursor: pointer;
+    }
 }
