@@ -34,16 +34,14 @@
             </li>
         {% endfor %}
     </ul>
+    {% if showcases%}
     <div class="vfx__showcases">
         <div class="showcases__cover"></div>
         <ul class="showcases__list">
             {% for item in showcases%}
-                <li class="showcases__item">
-                    <div class="showcase__thumb">
-                        <img src="{{item.img}}" alt="{{item.title}}" />
-                    </div>
-                </li>
-            {%endfor%}
+              {% include "./components/showcase.swig" with item only %}
+            {% endfor %}
         </ul>
     </div>
+  {% endif %}
 </div>

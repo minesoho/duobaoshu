@@ -22,6 +22,21 @@
               "type": "video",
               "videoId": "XMTcwMDMwNjIyNA=="
             }
+        }],
+        "showcases": [{
+          "img": "/images/test/animation_item_1.jpg",
+          "title": "天台",
+          "subtitle": "周杰伦",
+          "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+          "type": "video",
+          "videoId": "XMTcwMDMwNjIyNA=="
+        },{
+          "img": "/images/test/animation_item_1.jpg",
+          "title": "天台",
+          "subtitle": "周杰伦",
+          "desc": "介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案介绍文案",
+          "type": "video",
+          "videoId": "XMTcwMDMwNjIyNA=="
         }]
     },
     "animation": {
@@ -63,5 +78,20 @@
                 "img": "/images/test/origin_alert.png"
             }
         }]
+    },
+    "about": {
+      "type": "updown",
+      "desc": "关于我们",
+      "img": "/images/test/origin_alert.png"
+    },
+    "concat": {
+      "type": "updown",
+      "desc": "联系我们",
+      "img": "/images/test/origin_alert.png"
+    },
+    "jobs": {
+      "type": "updown",
+      "desc": "工作机会",
+      "img": "/images/test/origin_alert.png"
     }
 }

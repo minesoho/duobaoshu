@@ -72,7 +72,7 @@ module.exports = {
         locals = _mock;
 
         for(let key in locals){
-            if(locals[key].list.length < 3){
+            if(locals[key].list&&locals[key].list.length < 3){
                 for(let i=0,len=3-locals[key].list.length;i<len;i++){
                     locals[key].list.push({
                         img:'/images/blank.jpg',
@@ -85,7 +85,6 @@ module.exports = {
             title: "多宝树影视科技",
             data: locals
         });
-        // res.writeHead(200, {'content-type': 'text/html'});
         res.send(html);
     },
     admin: function(req,res){

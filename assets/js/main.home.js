@@ -190,5 +190,29 @@
         }
     }).on('click','.vfx__more',function(){
       $('.vfx__showcases').show();
+    }).on('click','.vfx__showcases',function(){
+      $(this).hide();
+    }).on('click','.showcases__item',function(e){
+      var ev = e||window.event;
+      ev.stopPropagation();
+      var $item = $(this);
+      var _type = $item.data('dtype');
+      if(_type == 'video'){
+        var _vid = $item.data('videoid');
+        $pageEntryCover.html('<div id="youkuplayer" style=""></div>').show();
+        player = new YKU.Player('youkuplayer',{
+          styleid: '0',
+          client_id: '58fa8f58142b191f',
+          vid: _vid,
+          newPlayer: true
+        });
+      }
+    }).on('click','.tts__head .nav__item',function(){
+      var $this = $(this);
+      var _page = $this.data('page');
+      var $page = $('.page__nav__cover--'+_page);
+      $page.toggle();
+    }).on('click','.page__nav__cover',function(){
+      $(this).hide();
     });
 })(window);
