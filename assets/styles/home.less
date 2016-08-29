@@ -1,21 +1,21 @@
- @import './common/base.less';
+@import './common/base.less';
 @import "./part/header.less";
 @import "./part/home/main.less";
 
-@window-width-normal: 960px;
-@window-height-normal: @window-width-normal*2/3;
+@window-width-normal: 840px;
+// @window-height-normal: @window-width-normal*2/3;
 @size-unit-normal: @window-width-normal/3;
 
 @window-width-large: 1200px;
-@window-height-large: @window-width-large*2/3;
+// @window-height-large: @window-width-large*2/3;
 @size-unit-large: @window-width-large/3;
 
 @window-width-mini: @window-width-normal*2/3;
-@window-height-mini: @window-width-mini/2;
+// @window-height-mini: @window-width-mini/2;
 @size-unit-mini: @window-width-mini/2;
 
 @window-width-h5: 960px;
-@window-height-h5: @window-width-h5*2/3;
+// @window-height-h5: @window-width-h5*2/3;
 
 body{
     background-color: #000;
@@ -50,23 +50,11 @@ body{
     }
 }
 .body--normal{
-  #youkuplayer{
-    width: 800px;
-    height: 490px;
-    margin: -245px 0 0 -400px;
-  }
     .window{
         width: @window-width-normal;
-        height: @window-height-normal;
-
     }
 }
 .body--large{
-  #youkuplayer{
-      width: 1000px;
-      height: 600px;
-      margin: -300px 0 0 -500px;
-  }
     .window{
         width: @window-width-large;
         .main__slider__pages{
@@ -124,11 +112,6 @@ body{
     }
 }
 .body--mini{
-    #youkuplayer{
-      width: 580px;
-      height: 360px;
-      margin: -180px 0 0 -290px;
-    }
     .window{
         width: @window-width-mini !important;
         .animation__cover__item,.origin__cover__item,.vfx__cover__item{
@@ -179,11 +162,6 @@ body{
 .body--h5{
     overflow-x: hidden;
     height: 100%;
-    #youkuplayer{
-      width: 90%;
-      -webkit-transform: translate(-50%,-50%);
-      transform: translate(-50%,-50%);
-    }
     .window{
         width:100%;
         height: 100%;
