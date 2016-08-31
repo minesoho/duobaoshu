@@ -52,9 +52,27 @@ body{
 .body--normal{
     .window{
         width: @window-width-normal;
+        .tts__more .more__title{
+          font-size: 30px;
+          height: 30px;
+          line-height: 30px;
+        }
+        .tts__more .more__subtitle{
+          font-size: 40px;
+          margin-top: 5px;
+          margin-bottom: 10px;
+          height: 40px;
+          line-height: 40px;
+        }
     }
 }
 .body--large{
+    #youkuplayer{
+      width: 800px;
+      margin-left: -400px;
+      height: 400px;
+      margin-top: -200px;
+    }
     .window{
         width: @window-width-large;
         .main__slider__pages{
@@ -112,8 +130,26 @@ body{
     }
 }
 .body--mini{
+    #youkuplayer{
+      width: 450px;
+      margin-left: -225px;
+      height: 300px;
+      margin-top: -150px;
+    }
     .window{
         width: @window-width-mini !important;
+        .tts__more .more__title{
+          font-size: 30px;
+          height: 30px;
+          line-height: 30px;
+        }
+        .tts__more .more__subtitle{
+          font-size: 40px;
+          margin-top: 5px;
+          margin-bottom: 10px;
+          height: 40px;
+          line-height: 40px;
+        }
         .animation__cover__item,.origin__cover__item,.vfx__cover__item{
             width: 49% !important;
         }
@@ -162,6 +198,12 @@ body{
 .body--h5{
     overflow-x: hidden;
     height: 100%;
+    #youkuplayer{
+      width: 500px;
+      margin-left: -250px;
+      height: 300px;
+      margin-top: -150px;
+    }
     .window{
         width:100%;
         height: 100%;
