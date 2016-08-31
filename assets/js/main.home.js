@@ -122,7 +122,7 @@
                 $cover.removeClass('step1').addClass('step2');
                 $spots.removeClass('current');
                 $spotBox.find('.spot[order="2"]').addClass('current');
-                $(this).removeClass('hide');
+                $(this).addClass('hide');
                 lock_slide = false;
             }
         }else{
