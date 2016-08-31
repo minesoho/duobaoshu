@@ -1,7 +1,7 @@
 <div class='tts__head'>
     <div class="head__box">
         <div class="box__logo">
-            <img src="/images/logo.png" alt="多宝树影视科技" />
+          <a href="/"><img src="/images/logo.png" alt="多宝树影视科技" /></a>
         </div>
         <div class="box__nav">
             <ul class="nav__list">
