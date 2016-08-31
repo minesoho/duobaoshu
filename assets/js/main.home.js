@@ -39,7 +39,7 @@
             $pageBox.find('.slider__page[order="2"]').addClass(CLASS_CURRENT);
             $spots.removeClass('current');
             $spotBox.find('.spot[order="2"]').addClass('current');
-            $('.main__slider__btn--next').hide();
+            $('.main__slider__btn--next').addClass('hide');
             lock_slide = false;
         }else{
             lock_slide = false;
@@ -60,7 +60,7 @@
             $pageBox.find('.slider__page[order="1"]').addClass(CLASS_CURRENT);
             $spots.removeClass('current');
             $spotBox.find('.spot[order="1"]').addClass('current');
-            $('.main__slider__btn--next').show();
+            $('.main__slider__btn--next').removeClass('hide');
             lock_slide = false;
         }else if($cover.hasClass('step1')){
             $cover.removeClass('step1').addClass('step0');
@@ -122,7 +122,7 @@
                 $cover.removeClass('step1').addClass('step2');
                 $spots.removeClass('current');
                 $spotBox.find('.spot[order="2"]').addClass('current');
-                $(this).hide();
+                $(this).removeClass('hide');
                 lock_slide = false;
             }
         }else{
