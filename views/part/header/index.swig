@@ -16,7 +16,7 @@
                     <i class="tts__icon tts__icon__concat item__icon"></i>
                     <div class="item__entry">
                         <div class="entry__title">联系我们</div>
-                        <div class="entry__subtitle">CONCAT</div>
+                        <div class="entry__subtitle">CONTACT</div>
                     </div>
                 </li>
                 <li class="nav__item" data-page='jobs'>

@@ -16,6 +16,8 @@
     var $pageEntryCover = $('.page__entry__cover');
     var $pageEntryCoverBox = $pageEntryCover.find(".cover__box");
 
+    var $sliderBtns = $('.main__slider__btn');
+
     var swipe_start = null,swipe_end = null;
 
     var SWIPE_STEP = 30;
@@ -55,6 +57,7 @@
         }
         lock_slide = true;
         $pageEntryCover.hide();
+        $sliderBtns.show();
         $spotBox.show();
         var $cover = $('.main__slider__pages .slider__cover');
         if($cover.hasClass('step2')){
@@ -87,6 +90,7 @@
         }
         lock_slide = true;
         $pageEntryCover.hide();
+        $sliderBtns.show();
         $spotBox.show();
         var $current = $('.'+CLASS_CURRENT);
         var curOrder = parseInt($current.attr('order'));
@@ -115,6 +119,7 @@
         }
         lock_slide = true;
         $pageEntryCover.hide();
+        $sliderBtns.show();
         $spotBox.show();
         if($(this).parents('.body--h5').length !==0){
             var $cover = $('.main__slider__pages .slider__cover');
@@ -154,12 +159,16 @@
             });
         }
 
-    }).on('click','.page__entry__cover .cover__action--close',function(){
-        $pageEntryCover.hide();
-        $spotBox.show();
-    }).on('touchend','.page__entry__cover .cover__action--close',function(){
-        $pageEntryCover.hide();
-        $spotBox.show();
+    }).on('click','.cover__action--close',function(){
+        $(this).parents('.page__entry__cover').hide();
+        $(this).parents('.page__nav__cover').hide();
+        $sliderBtns.toggle();
+        $spotBox.toggle();
+    }).on('touchend','.cover__action--close',function(){
+        $(this).parents('.page__entry__cover').hide();
+        $(this).parents('.page__nav__cover').hide();
+        $sliderBtns.toggle();
+        $spotBox.toggle();
     }).on('click','.tts__item',function(){
         var $this = $(this);
         var _type = $this.data('dtype');
@@ -167,6 +176,7 @@
           var _vid = $this.find('.item__entry__video').data('videoid');
           $pageEntryCoverBox.html('<div id="youkuplayer" style=""></div>');
           $pageEntryCover.show();
+          $sliderBtns.hide();
           $spotBox.hide();
           player = new YKU.Player('youkuplayer',{
             styleid: '0',
@@ -183,6 +193,7 @@
               var _html = _entry.html();
               $pageEntryCoverBox.html(_html);
               $pageEntryCover.show();
+              $sliderBtns.hide();
               $spotBox.hide();
           }
         }
@@ -214,6 +225,7 @@
         var _vid = $item.data('videoid');
         $pageEntryCoverBox.html('<div id="youkuplayer" style=""></div>');
         $pageEntryCover.show();
+        $sliderBtns.hide();
         $spotBox.hide();
         player = new YKU.Player('youkuplayer',{
           styleid: '0',
@@ -227,7 +239,7 @@
       var _page = $this.data('page');
       var $page = $('.page__nav__cover--'+_page);
       $page.toggle();
-    }).on('click','.page__nav__cover',function(){
-      $(this).hide();
+      $sliderBtns.toggle();
+      $spotBox.toggle();
     });
 })(window);
