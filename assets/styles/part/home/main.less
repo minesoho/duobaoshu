@@ -1,4 +1,5 @@
 @import "./_components.less";
+
 #youkuplayer{
   margin: 0 auto;
   position: absolute;
@@ -8,6 +9,19 @@
   margin-left: -300px;
   height: 300px;
   margin-top: -150px;
+}
+html{
+  height: 100%;
+}
+.window{
+  height: 100%;
+  position: relative;
+  .home__main__container{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+  }
 }
 .home__main{
     // width: @main-width-normal;
@@ -45,6 +59,7 @@
             right: -75px;
         }
     }
+
     .main__slider__pages{
         width: 100%;
         height: @size-unit-normal * 1.8;
@@ -77,3 +92,6 @@
         }
     }
 }
+@import "./_large.less";
+@import "./_mini.less";
+@import "./_h5.less";

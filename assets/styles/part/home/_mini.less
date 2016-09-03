@@ -1,0 +1,79 @@
+@window-width-normal: 840px;
+@size-unit-normal: @window-width-normal/3;
+
+@window-width-large: 1150px;
+@size-unit-large: @window-width-large/3;
+
+@window-width-mini: @window-width-normal*2/3;
+@size-unit-mini: @window-width-mini/2;
+
+@window-width-h5: 960px;
+.body--mini{
+    #youkuplayer{
+      width: 450px;
+      margin-left: -225px;
+      height: 300px;
+      margin-top: -150px;
+    }
+    .window{
+        width: @window-width-mini !important;
+        .home__main__container{
+          margin-top: -@size-unit-mini * 1.8/2
+        }
+        .tts__more .more__title{
+          font-size: 30px;
+          height: 30px;
+          line-height: 30px;
+        }
+        .tts__more .more__subtitle{
+          font-size: 40px;
+          margin-top: 5px;
+          margin-bottom: 10px;
+          height: 40px;
+          line-height: 40px;
+        }
+        .animation__cover__item,.origin__cover__item,.vfx__cover__item{
+            width: 49% !important;
+        }
+        .tts__more{
+            width: @size-unit-mini !important;
+            height: @size-unit-mini*0.9 !important;
+            z-index: 1;
+        }
+        .tts__main{
+            width: @size-unit-mini * 2 !important;
+            height: @size-unit-mini*0.9 !important;
+        }
+        .tts__item{
+            width: @size-unit-mini !important;
+            height: @size-unit-mini*0.9 !important;
+        }
+        .slider__page {
+            height: @size-unit-mini * 1.8;
+        }
+        .animation__more,.vfx__more,.origin__more{
+            top: @size-unit-mini*0.9 !important;
+        }
+        .vfx__more,.origin__more{
+            right: 0 !important;
+            left: inherit !important;
+        }
+        .animation__item,.vfx__item,.origin__item{
+            &--2,&--3{
+                display: none !important;
+            }
+        }
+        .head__box{
+            .box__logo{
+                margin-left: -65px;
+                img{
+                    width: 250px;
+                }
+            }
+            .box__nav{
+                padding-top: 20px;
+                margin-right: -135px;
+            }
+        }
+    }
+}

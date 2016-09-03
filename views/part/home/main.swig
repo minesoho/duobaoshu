@@ -4,11 +4,17 @@
         <i class="tts__icon tts__icon__page--prev"></i>
     </div>
     <ul class="main__slider__pages">
-        <div class="page__entry__cover"></div>
+        <div class="page__entry__cover">
+          <div class="cover__action--close">
+            <i class='tts__icon tts__icon__close'></i>
+          </div>
+          <div class="cover__box">
+
+          </div>
+        </div>
         {% include "_about.swig" with about only%}
         {% include "_concat.swig"  with concat only%}
         {% include "_jobs.swig"  with jobs only%}
-        <div class="page__video__cover"></div>
         <div class="slider__cover step1">
             <li class="slider__page slider__page__vfx slider__page--prev" order='0'>
                 <div class="page__box">

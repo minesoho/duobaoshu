@@ -14,6 +14,7 @@
     var $spots = $spotBox.find('.spot');
 
     var $pageEntryCover = $('.page__entry__cover');
+    var $pageEntryCoverBox = $pageEntryCover.find(".cover__box");
 
     var swipe_start = null,swipe_end = null;
 
@@ -24,7 +25,8 @@
             return;
         }
         lock_slide = true;
-        $('.page__entry__cover').hide();
+        $pageEntryCover.hide();
+        $spotBox.show();
         var $cover = $('.main__slider__pages .slider__cover');
         if($cover.hasClass('step0')){
             $cover.removeClass('step0').addClass('step1');
@@ -52,7 +54,8 @@
             return;
         }
         lock_slide = true;
-        $('.page__entry__cover').hide();
+        $pageEntryCover.hide();
+        $spotBox.show();
         var $cover = $('.main__slider__pages .slider__cover');
         if($cover.hasClass('step2')){
             $cover.removeClass('step2').addClass('step1');
@@ -83,7 +86,8 @@
             return;
         }
         lock_slide = true;
-        $('.page__entry__cover').hide();
+        $pageEntryCover.hide();
+        $spotBox.show();
         var $current = $('.'+CLASS_CURRENT);
         var curOrder = parseInt($current.attr('order'));
         var prevOrder = curOrder === 0?page_sum-1:curOrder-1;
@@ -110,7 +114,8 @@
             return;
         }
         lock_slide = true;
-        $('.page__entry__cover').hide();
+        $pageEntryCover.hide();
+        $spotBox.show();
         if($(this).parents('.body--h5').length !==0){
             var $cover = $('.main__slider__pages .slider__cover');
             if($cover.hasClass('step0')){
@@ -149,14 +154,20 @@
             });
         }
 
-    }).on('click','.page__entry__cover',function(){
-        $(this).hide();
+    }).on('click','.page__entry__cover .cover__action--close',function(){
+        $pageEntryCover.hide();
+        $spotBox.show();
+    }).on('touchend','.page__entry__cover .cover__action--close',function(){
+        $pageEntryCover.hide();
+        $spotBox.show();
     }).on('click','.tts__item',function(){
         var $this = $(this);
         var _type = $this.data('dtype');
         if(_type == 'video'){
           var _vid = $this.find('.item__entry__video').data('videoid');
-          $pageEntryCover.html('<div id="youkuplayer" style=""></div>').show();
+          $pageEntryCoverBox.html('<div id="youkuplayer" style=""></div>');
+          $pageEntryCover.show();
+          $spotBox.hide();
           player = new YKU.Player('youkuplayer',{
             styleid: '0',
             client_id: '58fa8f58142b191f',
@@ -170,7 +181,9 @@
           var _entry = $(this).find('.item__entry__info');
           if(_entry.length!==0){
               var _html = _entry.html();
-              $pageEntryCover.html(_html).show();
+              $pageEntryCoverBox.html(_html);
+              $pageEntryCover.show();
+              $spotBox.hide();
           }
         }
 
@@ -199,7 +212,9 @@
       var _type = $item.data('dtype');
       if(_type == 'video'){
         var _vid = $item.data('videoid');
-        $pageEntryCover.html('<div id="youkuplayer" style=""></div>').show();
+        $pageEntryCoverBox.html('<div id="youkuplayer" style=""></div>');
+        $pageEntryCover.show();
+        $spotBox.hide();
         player = new YKU.Player('youkuplayer',{
           styleid: '0',
           client_id: '58fa8f58142b191f',

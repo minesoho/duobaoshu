@@ -53,6 +53,7 @@ $(function() {
         '</div>',
         '<div class="showcase__cover">',
         '<div class="cover__action cover__actio--edit">编辑</div>',
+        '<div class="cover__action cover__actio--del">删除</div>',
         '</div>',
         '</li>'
       ].join('');
