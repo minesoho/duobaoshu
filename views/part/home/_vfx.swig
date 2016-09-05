@@ -37,6 +37,9 @@
     {% if showcases%}
     <div class="vfx__showcases">
         <div class="showcases__cover"></div>
+        <div class="cover__action--close">
+          <i class='tts__icon tts__icon__close'></i>
+        </div>
         <ul class="showcases__list">
             {% for item in showcases%}
               {% include "./components/showcase.swig" with item only %}
