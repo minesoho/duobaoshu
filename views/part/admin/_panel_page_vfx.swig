@@ -32,7 +32,7 @@
                     展示项目1
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {action: "/vfxItems" } only %}
+                    {% include "./__form_item.swig" with {formId: "vfxItems_1" } only %}
                 </div>
             </li>
             <li  class="body__item body__item__2">
@@ -40,7 +40,7 @@
                     展示项目2
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {action: "/vfxItems" } only %}
+                    {% include "./__form_item.swig" with {formId: "vfxItems_2" } only %}
                 </div>
             </li>
             <li  class="body__item body__item__3">
@@ -48,7 +48,7 @@
                     展示项目3
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {action: "/vfxItems" } only %}
+                    {% include "./__form_item.swig" with {formId: "/vfxItems_3" } only %}
                 </div>
             </li>
         </ul>

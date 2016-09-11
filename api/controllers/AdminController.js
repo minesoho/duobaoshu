@@ -1,25 +1,30 @@
 'use strict';
 
 module.exports = {
-    /************* vfx ***************/
-    setVfxMain: function(req,res){
+    /**
+     * 展示首页大图
+     */
+    setMain: function(req,res){
       if(Object.keys(req.params)===0){
         return res.jsonp({
             code: '102',
             msg: '参数为空'
         });
       }
+      let _module = req.param('module');
       let _data = {};
       req.param('title')&&(_data.title = req.param('title'));
       req.param('subtitle')&&(_data.subtitle = req.param('subtitle'));
       req.param('desc')&&(_data.desc = req.param('desc'));
+      req.param('coverImg')&&(_data.img = req.param('coverImg'));
+      req.param('detail')&&(_data.detail = req.param('detail'));
 
       Main.find({
-        moduleType: 'vfx'
+        moduleType: _module
       }).exec(function(err,items){
         if(items&&items.length!==0){
           Main.update({
-            moduleType: 'vfx'
+            moduleType: _module
           },_data).exec(function(err,updated){
             if(err){
               return res.send(err);
@@ -31,7 +36,7 @@ module.exports = {
           });
         }else{
           let __data = Object.assign({},{
-            moduleType: 'vfx'
+            moduleType: _module
           },_data);
           Main.create(__data).exec(function(err,created){
             if(err){
@@ -45,11 +50,15 @@ module.exports = {
         }
       });
     },
-    setVfxItem: function(req,res){
+    /**
+     * 展示首页展示普通item
+     */
+    setItem: function(req,res){
+      let _module = req.param('module');
       if(req.param('index')){
         Item.find({
           index: req.param('index'),
-          moduleType: 'vfx'
+          moduleType: _module
         }).exec(function(err,items){
           if(err){
             return res.send(err);
@@ -59,7 +68,7 @@ module.exports = {
           if(items&&items.length!==0){
             Item.update({
               index: req.param('index'),
-              moduleType: 'vfx'
+              moduleType: _module
             },_data).exec(function(err,updated){
               if(err){
                 return res.send(err);
@@ -71,7 +80,7 @@ module.exports = {
             });
           }else{
             let __data = Object.assign({},{
-              moduleType: 'vfx',
+              moduleType: _module,
               index: req.param('index')
             },_data);
             Item.create(__data).exec(function(err,created){
@@ -92,27 +101,31 @@ module.exports = {
         });
       }
     },
-    setVfxTitles: function(req,res){
+    /**
+     * 设置标题/副标题
+     */
+    setTitles: function(req,res){
         if(!req.param('title')||!req.param('subtitle')){
             return res.jsonp({
                 code: '102',
                 msg: '参数为空'
             });
         }
+        let _module = req.param('module');
         let _data = Object.assign({},{
             title: req.param('title')||'视觉特效',
             subtitle: req.param('subtitle')|| 'VFX'
         });
 
         Page.find({
-            name: 'vfx'
+            name: _module
         },function(err,page){
             if(err){
                 return res.send(err);
             }
             if(!page||page.length===0){
                 Page.create({
-                    name: 'vfx',
+                    name: _module,
                     title: req.param('title')||'视觉特效',
                     subtitle: req.param('subtitle')||'VFX'
                 },function(err,created){
@@ -126,7 +139,7 @@ module.exports = {
                 });
             }else{
                 Page.update({
-                    name: 'vfx'
+                    name: _module
                 },{
                     title: req.param('title')||'视觉特效',
                     subtitle: req.param('subtitle')||'VFX'
@@ -142,7 +155,10 @@ module.exports = {
             }
         });
     },
-    setVfxShowcase: function(req,res){
+    /**
+     * 设置弹层展示item
+     */
+    setShowcase: function(req,res){
       if(req.param('id')){
         Showcase.find({
           id: req.param('id')
@@ -181,8 +197,10 @@ module.exports = {
         });
       }
     },
-
-    getVfxShowcases: function(req,res){
+    /**
+     * 获取弹层展示items
+     */
+    getShowcases: function(req,res){
       let _limit = 20;
       let _page = req.param('page')||0;
       Showcase.find({
@@ -197,83 +215,5 @@ module.exports = {
           data: showcases
         });
       })
-    },
-
-    /************* animation ***************/
-    setAnimationMain: function(req,res){},
-    setAnimationItem: function(req,res){},
-    setAnimationTitles: function(req,res){
-        if(!req.param('title')||!req.param('subtitle')){
-            return res.jsonp({
-                code: '102',
-                msg: '参数为空'
-            });
-        }
-        let _data = Object.assign({},{
-            title: req.param('title')||'视觉特效',
-            subtitle: req.param('subtitle')|| 'VFX'
-        });
-
-        Page.find({
-            name: 'animation'
-        },function(err,page){
-            if(err){
-                return res.send(err);
-            }
-            if(!page||page.length===0){
-                Page.create({
-                    name: 'animation',
-                    title: req.param('title')||'动画作品',
-                    subtitle: req.param('subtitle')||'ANIMATION'
-                },function(err,created){
-                    if(err){
-                        return res.send(err);
-                    }
-                    res.jsonp({
-                        code: '100',
-                        msg: '操作成功'
-                    })
-                });
-            }
-        });
-    },
-
-    /************* origin ***************/
-    setOriginMain: function(req,res){},
-    setOriginItem: function(req,res){},
-    setOriginTitles: function(req,res){
-        if(!req.param('title')||!req.param('subtitle')){
-            return res.jsonp({
-                code: '102',
-                msg: '参数为空'
-            });
-        }
-        let _data = Object.assign({},{
-            title: req.param('title')||'视觉特效',
-            subtitle: req.param('subtitle')|| 'VFX'
-        });
-
-        Page.find({
-            name: 'origin'
-        },function(err,page){
-            if(err){
-                return res.send(err);
-            }
-            if(!page||page.length===0){
-                Page.create({
-                    name: 'origin',
-                    title: req.param('title')||'视觉特效',
-                    subtitle: req.param('subtitle')||'VFX'
-                },function(err,created){
-                    if(err){
-                        return res.send(err);
-                    }
-                    res.jsonp({
-                        code: '100',
-                        msg: '操作成功'
-                    })
-                });
-            }
-        });
     }
 };

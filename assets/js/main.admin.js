@@ -1,23 +1,17 @@
 $(function() {
-  window.onFileUploaded = function(res){
+  window.onFileUploaded = function(res) {
     console.log('onFileUploaded')
-    if(!res||!res.targetId){
+    if (!res || !res.targetId) {
       return;
     }
 
-    var $box = $('#'+res.targetId);
+    var $box = $('#' + res.targetId);
     $box.addClass('done');
-    $box.find('.form__area__hidden').attr('imgsrc',res.fd);
+    $box.find('.form__area__hidden').attr('data-src', res.fd);
   }
   var apis = {
-    title: {
-      vfx: '/vfxTitles',
-      animation: '/animationTitles',
-      origin: '/originTitles'
-    },
-    main: {
-      vfx: '/vfxMain'
-    },
+    settitles: '/settitles',
+    setmain: '/setmain',
     showcase: {
       get: {
         'vfx': '/vfxShowcases',
@@ -120,10 +114,11 @@ $(function() {
     if (!_title && !_subtitle) {
       return;
     }
+    _data.module = module;
     _data.title = _title || null;
     _data.subtitle = _subtitle || null;
     $.ajax({
-      url: api.title[module],
+      url: api.settitles,
       data: _data,
       method: 'post',
       dataType: 'jsonp',
@@ -140,32 +135,62 @@ $(function() {
     if (!module) {
       return;
     }
-    var $box = $('.panels__item__'+module+' .body__item__main');
+    var $box = $('.panels__item__' + module + ' .body__item__main');
     var _data = {};
     var _title = $box.find('.form__input[name="title"]')[0].value,
-    _subtitle = $box.find('.form__input[name="subtitle"]')[0].value,
-    _desc = $box.find('.form__input[name="shortcut"]')[0].value,
-    _coverImg = $box.find('.form__item__image .form__area__hidden').attr('imgsrc');
+      _subtitle = $box.find('.form__input[name="subtitle"]')[0].value,
+      _desc = $box.find('.form__input[name="shortcut"]')[0].value,
+      _coverImg = $box.find('.form__item__image--cover .form__area__hidden').data('src');
 
+    _data.module = module;
     _data.title = _title || null;
     _data.subtitle = _subtitle || null;
     _data.desc = _desc || null;
     _data.coverImg = _coverImg || null;
 
+    var $radio = $box.find('.form__input__radio:checked');
+    if($radio.length!==0){
+      var _value = $radio.val();
+      if(_value === 'video'){
+        var _vid = $radio.siblings('.form__input[name="vid"]').val();
+        if(_vid){
+          _data.detail = {
+            type: 'video',
+            videoid: _vid
+          };
+        }
+      }else if(_value === 'info'){
+        var $bodyItem = $($radio.parents('.body__item')[0]);
+        var _type = $bodyItem.find('.info__list .info__item.current').data('type');
+        var _desc = $bodyItem.find('.form__input[name="infodesc"]').val();
+        var _img = $bodyItem.children('.form__item__image').find('.form__area__hidden').data('src');
+        if(!_type||!_desc||!_img){
+          alert('图文混排内容不完整');
+          return;
+        }else{
+          _data.detail = {
+            type: _type,
+            desc: _desc,
+            img: _img
+          };
+        }
+      }
+    }
+
     $.ajax({
-      url: apis.main[module],
+      url: apis.setmain,
       dataType: 'jsonp',
       method: 'post',
       data: _data,
-      seccess: function(res){
-        if(!res||res.code !== '100'){
+      success: function(res) {
+        if (!res || res.code !== '100') {
           alert('操作失败');
-        }else{
+        } else {
           alert('保存成功');
         }
       },
-      error: function(){
-        alert('保存成功');
+      error: function() {
+        alert('操作失败');
       }
     });
   }
@@ -187,28 +212,28 @@ $(function() {
   });
 
   $(document).on('click', '.panel__body__showcase .showmore', function(e) {
-        return;
-        var $this = $(this);
-        var module = $this.data('module');
-        var $box = $this.parents('.panel__body__showcase').find('.showcase__list');
-        var page = $this.data('page') && parseInt($this.data('page')) || 0;
-        var query = page === 0 ? null : {
-          page: page
-        };
-        renderShowcases($box, apis.showcase.get[module], query);
-        $this.data('page', ++page);
-    }).on('click','.panel__body__showcase .showcase__item',function(){
-        var $this = $(this);
-        var module = $this.data('module');
-        var id=$this.data('id');
-        $('.showcase__edit__panel').attr('_module',module).attr('_id',id).addClass('show');
-    }).on('click','.showcase__edit__panel .close__btn',function(){
-        $('.showcase__edit__panel').removeClass('show').attr('_module','').attr('_id','');
-    }).on('click','.form__item__cover .info__item',function(){
-      if($(this).hasClass('current')){
-        return;
-      }
-      $(this).addClass('current');
-      $(this).siblings('.info__item').removeClass('current');
-    });
+    return;
+    var $this = $(this);
+    var module = $this.data('module');
+    var $box = $this.parents('.panel__body__showcase').find('.showcase__list');
+    var page = $this.data('page') && parseInt($this.data('page')) || 0;
+    var query = page === 0 ? null : {
+      page: page
+    };
+    renderShowcases($box, apis.showcase.get[module], query);
+    $this.data('page', ++page);
+  }).on('click', '.panel__body__showcase .showcase__item', function() {
+    var $this = $(this);
+    var module = $this.data('module');
+    var id = $this.data('id');
+    $('.showcase__edit__panel').attr('_module', module).attr('_id', id).addClass('show');
+  }).on('click', '.showcase__edit__panel .close__btn', function() {
+    $('.showcase__edit__panel').removeClass('show').attr('_module', '').attr('_id', '');
+  }).on('click', '.form__item__cover .info__item', function() {
+    if ($(this).hasClass('current')) {
+      return;
+    }
+    $(this).addClass('current');
+    $(this).siblings('.info__item').removeClass('current');
+  });
 });

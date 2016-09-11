@@ -22,4 +22,13 @@
             <i class="tts__icon tts__icon__play"></i>
         </div>
     </div>
+    {% if detail%}
+      {% if detail.type == 'video' %}
+        <div class="item__entry__video" data-videoId='{{detail.videoId}}'></div>
+      {% else%}
+      <div class="item__entry__info">
+        {% include "./entry_cover_info.swig" with detail only %}
+      </div>
+    {%endif%}
+    {% endif %}
 </div>

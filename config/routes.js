@@ -42,27 +42,16 @@ module.exports.routes = {
   // 上传图片api
   'post /uploadImage': 'FileController.uploadImage',
 
-  // vfx大图
-  'post /vfxMain': 'AdminController.setVfxMain',
-  // vfx首页展示items
-  'post /vfxItem': 'AdminController.setVfxItem',
-  // vfx title
-  'post /vfxTitles': 'AdminController.setVfxTitles',
-  // vfx showcase
-  'post /vfxShowcase': 'AdminController.setVfxShowcase',
-  'get /vfxShowcases': 'AdminController.getVfxShowcases',
+  // 大图
+  'post /setmain': 'AdminController.setMain',
+  // 首页展示items
+  'post /setitem': 'AdminController.setItem',
+  // titles
+  'post /settitles': 'AdminController.setTitles',
+  // showcase
+  'post /setshowcase': 'AdminController.setShowcase',
+  'get /getshowcases': 'AdminController.getShowcases',
 
-  'post /animationMain': 'AdminController.setAnimationMain',
-  'post /animationItem': 'AdminController.setAnimationItem',
-  'post /animationTitles': 'AdminController.setAnimationTitles',
-  // 'post /animationShowcase': 'AdminController.setAnimationShowcase',
-  // 'get /animationShowcases': 'AdminController.getAnimationShowcases',
-
-  'post /originMain': 'AdminController.setOriginMain',
-  'post /originItem': 'AdminController.setOriginItem',
-  'post /originTitles': 'AdminController.setOriginTitles',
-  // 'post /originShowcase': 'AdminController.setOriginShowcase',
-  // 'get /originShowcases': 'AdminController.getOriginShowcases',
 
   /***************************************************************************
   *                                                                          *

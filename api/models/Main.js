@@ -15,6 +15,9 @@ module.exports = {
         },
         desc: {
             type: 'string'
+        },
+        detail: {
+          type: 'object'
         }
     }
 };

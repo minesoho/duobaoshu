@@ -12,7 +12,7 @@ module.exports = {
 	uploadImage: function(req,res){
 		var targetId = req.param('targetId');
 		req.file('uploadFile').upload({
-			dirname: path.resolve(sails.config.appPath, 'assets/images/data')
+			dirname: path.join(sails.config.appPath, 'static')
 		},function(err,uploadedFiles){
 			if (err) {
 		      return res.negotiate(err);
@@ -23,7 +23,7 @@ module.exports = {
 	      return res.badRequest('No file was uploaded');
 	    }
 
-			let _fd = uploadedFiles[0].fd.split('assets')[1];
+			let _fd = 'http://'+sails.config.static.domain + uploadedFiles[0].fd.split('/static')[1];
 
 			return res.send('<script type="text/javascript">'+req.param('callback')+'('+JSON.stringify({
 				targetId: targetId,
