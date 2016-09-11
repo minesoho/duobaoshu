@@ -12,12 +12,10 @@ $(function() {
   var apis = {
     settitles: '/settitles',
     setmain: '/setmain',
+    setitem: '/setitem',
     showcase: {
-      get: {
-        'vfx': '/vfxShowcases',
-        'animation': '/animationShowcases',
-        'origin': '/originShowcases',
-      }
+      get: 'getshowcases',
+      set: 'setshowcase'
     }
   };
   var $main = $('.admin__main');
@@ -68,16 +66,18 @@ $(function() {
     $panels.removeClass('current');
     $panel.addClass('current');
     if ($this.attr('showcase')) {
-      var api = apis.showcase.get[$this.attr('showcase')];
-      renderShowcases($panel.find('.showcase__list'), api, $this.attr('showcase'));
+      var api = apis.showcase.get;
+      renderShowcases($panel.find('.showcase__list'), api);
     }
   }
 
-  function renderShowcases($box, api, module, query) {
+  function renderShowcases($box, api, module) {
     $.ajax({
       url: api,
       dataType: 'jsonp',
-      data: query || {},
+      data: {
+        module: module
+      },
       success: function(res) {
         if (!res || res.code !== '100') {
           return alert('请求失败');
@@ -118,7 +118,7 @@ $(function() {
     _data.title = _title || null;
     _data.subtitle = _subtitle || null;
     $.ajax({
-      url: api.settitles,
+      url: apis.settitles,
       data: _data,
       method: 'post',
       dataType: 'jsonp',
@@ -195,32 +195,110 @@ $(function() {
     });
   }
 
+  function postItem(module,index){
+    if(!module||!index){
+      return;
+    }
+    var $box = $('.panels__item__' + module + ' .body__item__normal[data-index='+index+']');
+    var _data = {
+      index: index
+    };
+    var _title = $box.find('.form__input[name="title"]')[0].value,
+      _subtitle = $box.find('.form__input[name="subtitle"]')[0].value,
+      _desc = $box.find('.form__input[name="shortcut"]')[0].value,
+      _coverImg = $box.find('.form__item__image--cover .form__area__hidden').data('src');
+
+    _data.module = module;
+    _data.title = _title || null;
+    _data.subtitle = _subtitle || null;
+    _data.desc = _desc || null;
+    _data.coverImg = _coverImg || null;
+
+    var $radio = $box.find('.form__input__radio:checked');
+    if($radio.length!==0){
+      var _value = $radio.val();
+      if(_value === 'video'){
+        var _vid = $radio.siblings('.form__input[name="vid"]').val();
+        if(_vid){
+          _data.detail = {
+            type: 'video',
+            videoid: _vid
+          };
+        }
+      }else if(_value === 'info'){
+        var $bodyItem = $($radio.parents('.body__item')[0]);
+        var _type = $bodyItem.find('.info__list .info__item.current').data('type');
+        var _desc = $bodyItem.find('.form__input[name="infodesc"]').val();
+        var _img = $bodyItem.children('.form__item__image').find('.form__area__hidden').data('src');
+        if(!_type||!_desc||!_img){
+          alert('图文混排内容不完整');
+          return;
+        }else{
+          _data.detail = {
+            type: _type,
+            desc: _desc,
+            img: _img
+          };
+        }
+      }
+    }
+
+    $.ajax({
+      url: apis.setitem,
+      dataType: 'jsonp',
+      method: 'post',
+      data: _data,
+      success: function(res) {
+        if (!res || res.code !== '100') {
+          alert('操作失败');
+        } else {
+          alert('保存成功');
+        }
+      },
+      error: function() {
+        alert('操作失败');
+      }
+    });
+  }
   $sidebar.on('click', '.sidebar__body .body__item', showPanelByItem);
 
   $panel_vfx.on('click', '.body__item__pagename .item__form__pagename .form__item__submit', function() {
     postTitles('vfx');
   }).on('click', '.body__item__main .form__item__submit', function() {
     postMain('vfx');
+  }).on('click','.body__item .form__item__submit',function(){
+    var _index = $(this).parents('.body__item__normal').data('index');
+    postItem('vfx',_index);
   });
 
   $panel_animation.on('click', '.body__item__pagename .item__form__pagename .form__item__submit', function() {
     postTitles('animation');
-  });
+  }).on('click', '.body__item__main .form__item__submit', function() {
+    postMain('animation');
+  }).on('click','.body__item .form__item__submit',function(){
+    var _index = $(this).parents('.body__item__normal').data('index');
+    postItem('animation',_index);
+  });;
 
   $panel_origin.on('click', '.body__item__pagename .item__form__pagename .form__item__submit', function() {
     postTitles('origin');
-  });
+  }).on('click', '.body__item__main .form__item__submit', function() {
+    postMain('origin');
+  }).on('click','.body__item .form__item__submit',function(){
+    var _index = $(this).parents('.body__item__normal').data('index');
+    postItem('origin',_index);
+  });;
 
   $(document).on('click', '.panel__body__showcase .showmore', function(e) {
     return;
     var $this = $(this);
     var module = $this.data('module');
     var $box = $this.parents('.panel__body__showcase').find('.showcase__list');
-    var page = $this.data('page') && parseInt($this.data('page')) || 0;
-    var query = page === 0 ? null : {
-      page: page
-    };
-    renderShowcases($box, apis.showcase.get[module], query);
+    // var page = $this.data('page') && parseInt($this.data('page')) || 0;
+    // var query = page === 0 ? null : {
+    //   page: page
+    // };
+    renderShowcases($box, apis.showcase.get[module],);
     $this.data('page', ++page);
   }).on('click', '.panel__body__showcase .showcase__item', function() {
     var $this = $(this);

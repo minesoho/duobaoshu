@@ -8,84 +8,124 @@ let _mock = require('./mock.json');
 module.exports = {
     index: function(req,res){
         let locals = null;
-        let vfx = {};
-        let animation = {};
-        let origin = {};
+        let vfx = {
+          more: null,
+          main: null,
+          list:[]
+        };
+        let animation = {
+          more: null,
+          main: null,
+          list:[]
+        };
+        let origin = {
+          more: null,
+          main: null,
+          list:[]
+        };
 
-        // More.find().exec(function(err,data){
-        //     if(err){
-        //         throw err;
-        //     }
-        //     vfx = _.assign(vfx,{
-        //         more: data.vfx
-        //     });
-        //     animation = _.assign(animation.{
-        //         more: data.animation
-        //     });
-        //     origin = _.assign(origin,{
-        //         more: data.origin
-        //     });
-        // });
-        // Main.find().exec(function(err,data){
-        //     if(err){
-        //         throw err;
-        //     }
-        //     vfx = _.assign(vfx,{
-        //         main: data.vfx
-        //     });
-        //     animation = _.assign(animation.{
-        //         main: data.animation
-        //     });
-        //     origin = _.assign(origin,{
-        //         main: data.origin
-        //     });
-        // });
-        // Item.find().exec(function(err,data){
-        //     if(err){
-        //         throw err;
-        //     }
-        //     let vfxItems = data.filter(function(value){
-        //         return value.moduleType == 'vfx';
-        //     });
-        //     let animationItems = data.filter(function(value){
-        //         return value.moduleType == 'animation';
-        //     });
-        //     let originItems = data.filter(function(value){
-        //         return value.moduleType == 'origin';
-        //     });
-        //     vfx = _.assign(vfx,{
-        //         list: vfxItems
-        //     });
-        //     animation = _.assign(animation.{
-        //         list: animationItems
-        //     });
-        //     origin = _.assign(origin,{
-        //         list: originItems
-        //     });
-        // });
-        //
-        // locals = _.assign({},{
-        //     vfx,
-        //     animation,
-        //     origin
-        // });
-        locals = _mock;
 
-        for(let key in locals){
-            if(locals[key].list&&locals[key].list.length < 3){
-                for(let i=0,len=3-locals[key].list.length;i<len;i++){
-                    locals[key].list.push({
-                        img:'/images/blank.jpg',
-                        blank: true
-                    });
-                }
+        Page.find().exec(function(err,data){
+            if(err){
+                throw err;
             }
-        }
-        let html = swig.renderFile('./views/home.swig',{
-            title: "多宝树影视科技",
-            data: locals
+            for(let i=0,len=data.length;i<len;i++){
+              switch (data[i].name) {
+                case 'vfx':
+                    vfx.more= {
+                      title: data[i].title,
+                      subtitle: data[i].subtitle
+                    }
+                  break;
+                case 'animation':
+                    animation.more= {
+                      title: data[i].title,
+                      subtitle: data[i].subtitle
+                    }
+                  break;
+                case 'origin':
+                    origin.more= {
+                      title: data[i].title,
+                      subtitle: data[i].subtitle
+                    }
+                  break;
+                default:
+                  break;
+              }
+            }
+            Main.find().exec(function(err,data){
+                if(err){
+                    throw err;
+                }
+                data.forEach(function(value){
+                  switch (value.moduleType) {
+                    case 'vfx':
+                      vfx = Object.assign(vfx,{
+                          main: value
+                      });
+                      break;
+                    case 'animation':
+                      animation = Object.assign(animation,{
+                          main: value
+                      });
+                      break;
+                    case 'origin':
+                      origin = Object.assign(origin,{
+                          main: value
+                      });
+                      break;
+                    default:
+                      break;
+                  }
+                });
+                Item.find().exec(function(err,data){
+                    if(err){
+                        throw err;
+                    }
+                    data.forEach(function(value){
+                      switch (value.moduleType) {
+                        case 'vfx':
+                          vfx.list.push(value);
+                          break;
+                        case 'animation':
+                          animation.list.push(value);
+                          break;
+                        case 'origin':
+                          origin.list.push(value);
+                          break;
+                        default:
+                      }
+                    });
+                    locals = {
+                      vfx: vfx,
+                      animation: animation,
+                      origin: origin
+                    };
+                    // locals = _mock;
+                    for(let key in locals){
+                        if(locals[key].list&&locals[key].list.length < 3){
+                            for(let i=0,len=3-locals[key].list.length;i<len;i++){
+                                locals[key].list.push({
+                                    img:'/images/blank.jpg',
+                                    blank: true
+                                });
+                            }
+                        }
+                        if(!locals[key].main||!locals[key].main.img){
+                          locals[key].main = {
+                            img:'/images/blank.jpg',
+                            blank: true
+                          }
+                        }
+                    }
+                    let html = swig.renderFile('./views/home.swig',{
+                        title: "多宝树影视科技",
+                        data: locals
+                    });
+                    return res.send(html);
+                });
+            });
         });
-        res.send(html);
     },
     admin: function(req,res){
         let html = '';

@@ -34,14 +34,14 @@
             </li>
         {% endfor %}
     </ul>
-    {% if showcases%}
+    {% if showcase%}
     <div class="vfx__showcases">
         <div class="showcases__cover"></div>
         <div class="cover__action--close">
           <i class='tts__icon tts__icon__close'></i>
         </div>
         <ul class="showcases__list">
-            {% for item in showcases%}
+            {% for item in showcase%}
               {% include "./components/showcase.swig" with item only %}
             {% endfor %}
         </ul>

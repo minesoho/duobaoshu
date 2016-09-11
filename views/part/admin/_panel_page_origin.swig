@@ -24,31 +24,31 @@
                     头部大图
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {action: "/originMain" } only %}
+                    {% include "./__form_item.swig" with {formId: "originMain" } only %}
                 </div>
             </li>
-            <li  class="body__item body__item__1">
+            <li  class="body__item body__item__normal" data-index='1'>
                 <div class="item__head">
                     展示项目1
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {action: "/originItems" } only %}
+                    {% include "./__form_item.swig" with {formId: "originItems_1" } only %}
                 </div>
             </li>
-            <li  class="body__item body__item__2">
+            <li  class="body__item body__item__normal" data-index='2'>
                 <div class="item__head">
                     展示项目2
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {action: "/originItems" } only %}
+                    {% include "./__form_item.swig" with {formId: "/originItems_2" } only %}
                 </div>
             </li>
-            <li  class="body__item body__item__3">
+            <li  class="body__item body__item__normal" data-index='3'>
                 <div class="item__head">
                     展示项目3
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {action: "/originItems" } only %}
+                    {% include "./__form_item.swig" with {formId: "/originItems_3" } only %}
                 </div>
             </li>
         </ul>

@@ -23,7 +23,13 @@ module.exports = {
 	      return res.badRequest('No file was uploaded');
 	    }
 
-			let _fd = 'http://'+sails.config.static.domain + uploadedFiles[0].fd.split('/static')[1];
+			let _fd='';
+
+			if(/\//.test(uploadedFiles[0].fd)){
+				_fd = 'http://'+sails.config.static.domain + uploadedFiles[0].fd.split('/static')[1];
+			}else{
+				_fd = 'http://'+sails.config.static.domain + '/'+uploadedFiles[0].fd.split('static\\')[1];
+			}
 
 			return res.send('<script type="text/javascript">'+req.param('callback')+'('+JSON.stringify({
 				targetId: targetId,

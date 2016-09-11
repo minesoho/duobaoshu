@@ -204,6 +204,32 @@
           }
         }
 
+    }).on('click','.tts__main',function(){
+        var $this = $(this);
+        var _type = $this.data('dtype');
+        if(_type == 'video'){
+          var _vid = $this.find('.item__entry__video').data('videoid');
+          $pageEntryCoverBox.html('<div id="youkuplayer" style=""></div>');
+          $pageEntryCover.show();
+          $sliderBtns.hide();
+          $spotBox.hide();
+          player = new YKU.Player('youkuplayer',{
+            styleid: '0',
+            client_id: '58fa8f58142b191f',
+            vid: _vid,
+            newPlayer: true
+          });
+        }else{
+          var _entry = $(this).find('.item__entry__info');
+          if(_entry.length!==0){
+              var _html = _entry.html();
+              $pageEntryCoverBox.html(_html);
+              $pageEntryCover.show();
+              $sliderBtns.hide();
+              $spotBox.hide();
+          }
+        }
+
     }).on('touchstart','.slider__cover',function(event){
         var ev = event||window.event;
         swipe_start = ev.originalEvent.touches[0].screenY;

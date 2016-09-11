@@ -55,19 +55,25 @@ module.exports = {
      */
     setItem: function(req,res){
       let _module = req.param('module');
+      let _index = req.param('index');
       if(req.param('index')){
         Item.find({
-          index: req.param('index'),
+          index: _index,
           moduleType: _module
         }).exec(function(err,items){
           if(err){
             return res.send(err);
           }
-          let _data = Object.assign({},req.params);
+          let _data = {};
+          req.param('title')&&(_data.title = req.param('title'));
+          req.param('subtitle')&&(_data.subtitle = req.param('subtitle'));
+          req.param('desc')&&(_data.desc = req.param('desc'));
+          req.param('coverImg')&&(_data.img = req.param('coverImg'));
+          req.param('detail')&&(_data.detail = req.param('detail'));
 
           if(items&&items.length!==0){
             Item.update({
-              index: req.param('index'),
+              index: _index,
               moduleType: _module
             },_data).exec(function(err,updated){
               if(err){
@@ -81,7 +87,7 @@ module.exports = {
           }else{
             let __data = Object.assign({},{
               moduleType: _module,
-              index: req.param('index')
+              index: _index
             },_data);
             Item.create(__data).exec(function(err,created){
               if(err){

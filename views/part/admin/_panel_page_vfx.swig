@@ -27,7 +27,7 @@
                     {% include "./__form_item.swig" with {formId:'vfxmain' } only %}
                 </div>
             </li>
-            <li  class="body__item body__item__1">
+            <li  class="body__item body__item__normal" data-index='1'>
                 <div class="item__head">
                     展示项目1
                 </div>
@@ -35,7 +35,7 @@
                     {% include "./__form_item.swig" with {formId: "vfxItems_1" } only %}
                 </div>
             </li>
-            <li  class="body__item body__item__2">
+            <li  class="body__item body__item__normal" data-index='2'>
                 <div class="item__head">
                     展示项目2
                 </div>
@@ -43,7 +43,7 @@
                     {% include "./__form_item.swig" with {formId: "vfxItems_2" } only %}
                 </div>
             </li>
-            <li  class="body__item body__item__3">
+            <li  class="body__item body__item__normal" data-index='3'>
                 <div class="item__head">
                     展示项目3
                 </div>

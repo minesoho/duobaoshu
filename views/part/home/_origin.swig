@@ -37,7 +37,7 @@
     <div class="origin__showcases">
         <div class="showcases__cover"></div>
         <ul class="showcases__list">
-            {% for item in showcases%}
+            {% for item in showcase%}
                 <li class="showcases__item">
                     <div class="showcase__thumb">
                         <img src="{{item.img}}" alt="{{item.title}}" />
