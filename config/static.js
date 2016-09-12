@@ -1,3 +1,3 @@
 module.exports.static = {
-  domain: 'static.tts.com'
+  domain: 'static.treasuretreestudios.com'
 };
