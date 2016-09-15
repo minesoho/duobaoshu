@@ -8,6 +8,7 @@
     display: inline-block;
     vertical-align: middle;
     position: relative;
+    max-width: 300px;
     &:hover{
         .showcase__cover{
             display: block;
@@ -55,7 +56,6 @@
             position: absolute;
             top: 50%;
             left: 10%;
-            margin-top: -15px;
             cursor: pointer;
             width: 80%;
             height: 30px;
@@ -65,6 +65,9 @@
             &:hover{
                 background-color: #fff;
                 color: #000;
+            }
+            &--edit{
+              margin-top: -45px;
             }
         }
     }

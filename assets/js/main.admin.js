@@ -14,8 +14,9 @@ $(function() {
     setmain: '/setmain',
     setitem: '/setitem',
     showcase: {
-      get: 'getshowcases',
-      set: 'setshowcase'
+      get: '/getshowcases',
+      set: '/setshowcase',
+      del: '/delshowcase'
     }
   };
   var $main = $('.admin__main');
@@ -44,8 +45,8 @@ $(function() {
         data[i].title,
         '</div>',
         '<div class="showcase__cover">',
-        '<div class="cover__action cover__actio--edit">编辑</div>',
-        '<div class="cover__action cover__actio--del">删除</div>',
+        '<div class="cover__action cover__action--edit">编辑</div>',
+        '<div class="cover__action cover__action--del">删除</div>',
         '</div>',
         '</li>'
       ].join('');
@@ -66,27 +67,126 @@ $(function() {
     $panels.removeClass('current');
     $panel.addClass('current');
     if ($this.attr('showcase')) {
-      var api = apis.showcase.get;
-      renderShowcases($panel.find('.showcase__list'), api);
+      var _module = $panel.data('module');
+      renderShowcases($panel.find('.showcase__list'),_module);
     }
   }
 
-  function renderShowcases($box, api, module) {
+  function renderShowcases($box, module) {
     $.ajax({
-      url: api,
+      url: apis.showcase.get,
       dataType: 'jsonp',
       data: {
         module: module
       },
       success: function(res) {
+        console.log('success')
         if (!res || res.code !== '100') {
           return alert('请求失败');
         }
         var _data = res.data;
-        var _html = showcaseHtml(_data, module);
+        var _html = '';
+        for(var i=0,len=_data.length;i<len;i++){
+          _html += showcaseHtml(_data, module);
+        }
         $box.append($(_html));
       }
     });
+  }
+
+  function setShowcase($panel,module,id){
+    if(!$panel||!module){
+      return;
+    }
+    var _data = {};
+    _data.module = module;
+    if(id){
+      _data.id=id;
+    }
+
+    var _title = $panel.find('.form__input[name="title"]')[0].value,
+      _subtitle = $panel.find('.form__input[name="subtitle"]')[0].value,
+      _desc = $panel.find('.form__input[name="shortcut"]')[0].value,
+      _coverImg = $panel.find('.form__item__image--cover .form__area__hidden').data('src');
+
+    _data.module = module;
+    _data.title = _title || null;
+    _data.subtitle = _subtitle || null;
+    _data.desc = _desc || null;
+    _data.coverImg = _coverImg || null;
+
+    var $radio = $panel.find('.form__input__radio:checked');
+    if($radio.length!==0){
+      var _value = $radio.val();
+      if(_value === 'video'){
+        var _vid = $radio.siblings('.form__input[name="vid"]').val();
+        if(_vid){
+          _data.detail = {
+            type: 'video',
+            videoid: _vid
+          };
+        }
+      }else if(_value === 'info'){
+        var $bodyItem = $($radio.parents('.body__item')[0]);
+        var _type = $bodyItem.find('.info__list .info__item.current').data('type');
+        var _desc = $bodyItem.find('.form__input[name="infodesc"]').val();
+        var _img = $bodyItem.children('.form__item__image').find('.form__area__hidden').data('src');
+        if(!_type||!_desc||!_img){
+          alert('图文混排内容不完整');
+          return;
+        }else{
+          _data.detail = {
+            type: _type,
+            desc: _desc,
+            img: _img
+          };
+        }
+      }
+    }
+
+    $.ajax({
+      url: apis.showcase.set,
+      dataType: 'jsonp',
+      data: _data,
+      method: 'post',
+      success: function(res){
+        if(!res||res.code !== '100'){
+          alert('操作失败');
+          return;
+        }
+        var _data = res.data;
+        var _arr = [].push(_data);
+        var _html = showcaseHtml(_arr,_data.module);
+        var id = _data.id;
+        if($panel.find('showcase__item[data-id='+id+']').length===0){
+          $panel.find('.showcase__list').append($(_html));
+        }else{
+          $panel.find('showcase__item[data-id='+id+']')[0].outerHTML = _html;
+        }
+      }
+    })
+  }
+
+  function deleteShowcase($panel,module,id){
+    if(!$panel||!module||!id){
+      return;
+    }
+    var _data = {
+      module: module,
+      id: id
+    };
+    $.ajax({
+      url: apis.showcase.del,
+      dataType: 'jsonp',
+      data: _data,
+      success: function(res){
+        if(!res||res.code !== '100'){
+          alert('操作失败');
+          return;
+        }
+        $panel.find('showcase__item[data-id='+id+']').remove();
+      }
+    })
   }
 
   function postTitles(module) {
@@ -260,6 +360,7 @@ $(function() {
       }
     });
   }
+
   $sidebar.on('click', '.sidebar__body .body__item', showPanelByItem);
 
   $panel_vfx.on('click', '.body__item__pagename .item__form__pagename .form__item__submit', function() {
@@ -298,15 +399,38 @@ $(function() {
     // var query = page === 0 ? null : {
     //   page: page
     // };
-    renderShowcases($box, apis.showcase.get[module],);
+    renderShowcases($box, apis.showcase.get[module]);
     $this.data('page', ++page);
-  }).on('click', '.panel__body__showcase .showcase__item', function() {
-    var $this = $(this);
-    var module = $this.data('module');
-    var id = $this.data('id');
+  }).on('click', '.panel__body__showcase .showcase__item .cover__action--edit', function() {
+    // 编辑
+    var $item = $(this).parents('.showcase__item');
+    var module = $item.data('module');
+    var id = $item.data('id')||'';
+    console.log(module)
+    console.log(id)
+    var $form_cover = $('.showcase__edit__panel').find('.form__item__image--cover form');
+    var $form_showcase = $('.showcase__edit__panel').find('.form__item__image--showcase');
+    $form_cover.attr('id','sc_'+id).attr('action','/uploadImage?targetId=sc_'+id+'&callback=parent.onFileUploaded');
+    $form_showcase.attr('id','sc_'+id+'_showcase').attr('action','/uploadImage?targetId=sc_'+id+'_showcase&callback=parent.onFileUploaded');
     $('.showcase__edit__panel').attr('_module', module).attr('_id', id).addClass('show');
+  }).on('click', '.panel__body__showcase .showcase__item .showcase__action__add', function() {
+    // 添加
+    var $item = $(this).parents('.showcase__item');
+    var module = $item.data('module');
+    var id = 'add';
+    var $form_cover = $('.showcase__edit__panel').find('.form__item__image--cover form');
+    var $form_showcase = $('.showcase__edit__panel').find('.form__item__image--showcase');
+    $form_cover.attr('id','sc_'+id).attr('action','/uploadImage?targetId=sc_'+id+'&callback=parent.onFileUploaded');
+    $form_showcase.attr('id','sc_'+id+'_showcase').attr('action','/uploadImage?targetId=sc_'+id+'_showcase&callback=parent.onFileUploaded');
+    $('.showcase__edit__panel').attr('_module', module).addClass('show');
   }).on('click', '.showcase__edit__panel .close__btn', function() {
     $('.showcase__edit__panel').removeClass('show').attr('_module', '').attr('_id', '');
+  }).on('click','.showcase__edit__panel .form__item__submit',function(){
+    console.log('submit showcase');
+    var $panel = $(this).parents('.showcase__edit__panel');
+    var _id = $panel.attr('_id');
+    var _module = $panel.attr('_module');
+    setShowcase($panel,_module,_id);
   }).on('click', '.form__item__cover .info__item', function() {
     if ($(this).hasClass('current')) {
       return;

@@ -1,4 +1,4 @@
-<div class="panels__item panels__item__origin--more" data-page='origin-more'>
+<div class="panels__item panels__item__origin--more" data-page='origin-more' data-module='origin'>
     <div class="panel__head">
         页面配置 > 原创作品 - 更多
     </div>

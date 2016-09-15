@@ -1,4 +1,4 @@
-<div class="panels__item panels__item__animation--more" data-page='animation-more'>
+<div class="panels__item panels__item__animation--more" data-page='animation-more' data-module='animation'>
     <div class="panel__head">
         页面配置 > 动画作品 - 更多
     </div>

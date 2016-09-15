@@ -2,5 +2,5 @@
     <div class="close__btn">
         X
     </div>
-    {% include "./__form_item.swig"%}
+    {% include "./__form_item.swig" %}
 </div>
