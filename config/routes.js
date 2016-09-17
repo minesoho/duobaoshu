@@ -53,6 +53,7 @@ module.exports.routes = {
   'get /getshowcases': 'AdminController.getShowcases',
   'get /delshowcase':  'AdminController.deleteShowcase',
 
+  'get /setContentModule': 'AdminController.setContentModule',
 
   /***************************************************************************
   *                                                                          *

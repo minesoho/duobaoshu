@@ -18,6 +18,9 @@
             <input class="form__input form__input--submit" type="submit" class="upload__btn tts__btn" value="上传">
             <div class="form__area__hidden" data-src=''>上传成功！</div>
         </form>
+        <div class="hint hint__cover">
+          建议尺寸: {{sizecover}}
+        </div>
     </div>
     <div class="form__item form__item__cover">
         <div class="title">
@@ -33,10 +36,8 @@
             <div class="body__item">
                 <div class="form__item">
                     <label class="form__label" for="">图文混排：</label>
-                    <input class="form__input__radio" type="radio" name="showtype" value="info">
-                    <label for="showtype">显示此项</label>
                     <ul class="info__list">
-                        <li class="info__item info__item__vertical current" data-type='info--updown'>
+                        <li class="info__item info__item__vertical" data-type='info--updown'>
                             <div class="info__desc">
                                 文案
                             </div>
@@ -44,7 +45,7 @@
                                 配图
                             </div>
                         </li>
-                        <li class="info__item info__item__horizontal" data-type='info--lr'>
+                        <li class="info__item info__item__horizontal current" data-type='info--lr'>
                             <div class="info__desc">
                                 文案
                             </div>
@@ -53,6 +54,8 @@
                             </div>
                         </li>
                     </ul>
+                    <input class="form__input__radio" type="radio" name="showtype" value="info">
+                    <label for="showtype">显示此项</label>
                 </div>
                 <div class="form__item">
                     <label class="form__label" for="infodesc">文案：</label>
@@ -64,6 +67,9 @@
                     <input class="form__input form__input--submit" type="submit" class="upload__btn tts__btn" value="上传">
                     <div class="form__area__hidden">上传成功！</div>
                 </form>
+                <div class="hint hint__showcase">
+                  建议尺寸:{{sizeshowcase}}
+                </div>
             </div>
         </div>
     </div>

@@ -4,7 +4,9 @@
     </div>
     <div class="panel__body panel__body__showcase">
       <ul class="showcase__list">
-
+      <li class="showcase__item showcase__item__add" data-module='origin'>
+        {% include "__addshowcase.swig"%}
+      </li>
       </ul>
       {# <div class="showmore">查看更多</div> #}
     </div>

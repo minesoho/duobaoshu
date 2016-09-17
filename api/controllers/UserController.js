@@ -9,44 +9,37 @@ var passport = require('passport');
 var rescode = sails.config.rescode;
 module.exports = {
     signin: function(req, res) {
-        // 使用本地验证策略对登录进行验证
-        // passport.authenticate('local', function(err, user, info) {
-        //     if (err) {
-        //         return res.json({
-        //             code: rescode.error,
-        //             msg: '操作失败，请重试'
-        //         });
-        //     }
-        //     if (!user) {
-        //         return res.jsonp({
-        //             code: rescode.notfound,
-        //             msg: '用户不存在'
-        //         });
-        //     }
-        //     req.logIn(user, function(err) {
-        //         if (err) {
-        //             res.jsonp({
-        //                 code: rescode.error,
-        //                 msg: '操作失败，请重试'
-        //             });
-        //         }
-        //         if (info.code === '100') {
-        //             req.session.login = true;
-        //             return res.redirect('/admin');
-        //         } else {
-        //             res.jsonp({
-        //                 code: rescode.error,
-        //                 msg: '操作失败，请重试'
-        //             });
-        //         }
-        //     });
-        //
-        // })(req, res);
+      var name = req.param('name');
+      var pwd = req.param('pwd');
+      if(!name||!pwd){
+        return res.jsonp({
+            code: '403',
+            msg: '信息不完整'
+        });
+      }
+      User.findOne({
+        username: name,
+        password: pwd
+      }).exec(function(err,user){
+        if (err) {
+            return res.jsonp({
+                code: rescode.error,
+                msg: '操作失败，请重试'
+            });
+        }
+        if (!user) {
+            return res.jsonp({
+                code: rescode.notfound,
+                msg: '用户不存在'
+            });
+        }
         req.session.login = true;
         return res.jsonp({
             code: '100',
             msg: '登录成功'
         });
+      });
+
     },
     signup: function(req,res){
         User.find().exec(function(err,users){
@@ -58,7 +51,7 @@ module.exports = {
             }else{
                 var _user = {
                     username: 'admin',
-                    password: 'ttsDuobaoshu'
+                    password: 'Duobaoshu*2016'
                 };
                 User.create(_user).exec(function(err,user){
                     if(err){

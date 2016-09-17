@@ -17,7 +17,8 @@ $(function() {
       get: '/getshowcases',
       set: '/setshowcase',
       del: '/delshowcase'
-    }
+    },
+    content: '/setContentModule'
   };
   var $main = $('.admin__main');
   var $sidebar = $('.admin__main__sidebar');
@@ -34,6 +35,7 @@ $(function() {
   var $panel_jobs = $panelsBox.find('.panels__item__jobs');
 
   function showcaseHtml(data, module) {
+    console.log('showcaseHtml')
     var html = [];
     for (var i = 0, len = data.length; i < len; i++) {
       var _li = [
@@ -80,15 +82,12 @@ $(function() {
         module: module
       },
       success: function(res) {
-        console.log('success')
         if (!res || res.code !== '100') {
           return alert('请求失败');
         }
         var _data = res.data;
         var _html = '';
-        for(var i=0,len=_data.length;i<len;i++){
-          _html += showcaseHtml(_data, module);
-        }
+        _html += showcaseHtml(_data, module);
         $box.append($(_html));
       }
     });
@@ -150,25 +149,32 @@ $(function() {
       data: _data,
       method: 'post',
       success: function(res){
+        console.log('sdf')
         if(!res||res.code !== '100'){
           alert('操作失败');
           return;
         }
         var _data = res.data;
-        var _arr = [].push(_data);
+        var _arr = [];
+        _arr.push(_data);
         var _html = showcaseHtml(_arr,_data.module);
         var id = _data.id;
-        if($panel.find('showcase__item[data-id='+id+']').length===0){
-          $panel.find('.showcase__list').append($(_html));
+        var $list = $('.panels__item[data-page='+module+'-more]').find('.showcase__list');
+        if($list.find('.showcase__item[data-id='+id+']').length===0){
+          $list.append($(_html));
         }else{
-          $panel.find('showcase__item[data-id='+id+']')[0].outerHTML = _html;
+          $list.find('.showcase__item[data-id='+id+']')[0].outerHTML = _html;
         }
+      },
+      complete: function(){
+        $panel.removeClass('show');
+        $panel.find('form').removeClass('done');
       }
     })
   }
 
-  function deleteShowcase($panel,module,id){
-    if(!$panel||!module||!id){
+  function deleteShowcase(id,module){
+    if(!module||!id){
       return;
     }
     var _data = {
@@ -184,7 +190,8 @@ $(function() {
           alert('操作失败');
           return;
         }
-        $panel.find('showcase__item[data-id='+id+']').remove();
+        var $list = $('.panels__item[data-page='+module+'-more]').find('.showcase__list');
+        $list.find('.showcase__item[data-id='+id+']').remove();
       }
     })
   }
@@ -361,6 +368,26 @@ $(function() {
     });
   }
 
+  function setContentModule(module,content){
+    if(!module||!content){
+      return alert('参数错误');
+    }
+    $.ajax({
+      url: apis.content,
+      data: {
+        module: module,
+        content: content
+      },
+      dataType: 'jsonp',
+      success: function(res){
+        if(!res||res.code !== '100'){
+          alert('操作失败');
+          return;
+        }
+        alert('操作成功');
+      }
+    })
+  }
   $sidebar.on('click', '.sidebar__body .body__item', showPanelByItem);
 
   $panel_vfx.on('click', '.body__item__pagename .item__form__pagename .form__item__submit', function() {
@@ -406,13 +433,16 @@ $(function() {
     var $item = $(this).parents('.showcase__item');
     var module = $item.data('module');
     var id = $item.data('id')||'';
-    console.log(module)
-    console.log(id)
     var $form_cover = $('.showcase__edit__panel').find('.form__item__image--cover form');
     var $form_showcase = $('.showcase__edit__panel').find('.form__item__image--showcase');
     $form_cover.attr('id','sc_'+id).attr('action','/uploadImage?targetId=sc_'+id+'&callback=parent.onFileUploaded');
     $form_showcase.attr('id','sc_'+id+'_showcase').attr('action','/uploadImage?targetId=sc_'+id+'_showcase&callback=parent.onFileUploaded');
     $('.showcase__edit__panel').attr('_module', module).attr('_id', id).addClass('show');
+  }).on('click', '.panel__body__showcase .showcase__item .cover__action--del', function() {
+    var $item = $(this).parents('.showcase__item');
+    var module = $item.data('module');
+    var id = $item.data('id')||'';
+    deleteShowcase(id,module);
   }).on('click', '.panel__body__showcase .showcase__item .showcase__action__add', function() {
     // 添加
     var $item = $(this).parents('.showcase__item');
@@ -425,8 +455,8 @@ $(function() {
     $('.showcase__edit__panel').attr('_module', module).addClass('show');
   }).on('click', '.showcase__edit__panel .close__btn', function() {
     $('.showcase__edit__panel').removeClass('show').attr('_module', '').attr('_id', '');
+    $('.showcase__edit__panel').find('form').removeClass('done');
   }).on('click','.showcase__edit__panel .form__item__submit',function(){
-    console.log('submit showcase');
     var $panel = $(this).parents('.showcase__edit__panel');
     var _id = $panel.attr('_id');
     var _module = $panel.attr('_module');
@@ -435,7 +465,22 @@ $(function() {
     if ($(this).hasClass('current')) {
       return;
     }
+    var $body = $(this).parents('.body__item');
+    var $hint = $body.find('.hint__showcase');
+    if($(this).hasClass('info__item__vertical')){
+      $hint.html('建议尺寸:415 x 800');
+    }else{
+      $hint.html('建议尺寸:880 x 415');
+    }
     $(this).addClass('current');
     $(this).siblings('.info__item').removeClass('current');
+  }).on('click','.form__simple__area .tts__btn',function(){
+    var module = $(this).parents('.form__simple__area').data('module');
+    var content = $(this).parents('.form__simple__area').find('textarea').val();
+    if(!content){
+      alert('内容不能为空');
+    }else{
+      setContentModule(module,content);
+    }
   });
 });

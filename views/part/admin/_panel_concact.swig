@@ -3,5 +3,6 @@
         页面配置 > 联系我们
     </div>
     <div class="panel__body">
+      {% include "__textarea.swig" with {module:'concact'} only %}
     </div>
 </div>

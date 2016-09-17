@@ -37,12 +37,8 @@
     <div class="origin__showcases">
         <div class="showcases__cover"></div>
         <ul class="showcases__list">
-            {% for item in showcase%}
-                <li class="showcases__item">
-                    <div class="showcase__thumb">
-                        <img src="{{item.img}}" alt="{{item.title}}" />
-                    </div>
-                </li>
+            {% for item in showcases%}
+                {% include "./components/showcase.swig" with item only %}
             {%endfor%}
         </ul>
     </div>

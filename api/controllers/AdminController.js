@@ -169,7 +169,6 @@ module.exports = {
     let _moduleType = req.param('module');
 
     if (_id) {
-      console.log('update')
       Showcase.find({
         id: _id,
         moduleType: _moduleType
@@ -182,7 +181,7 @@ module.exports = {
           let _data = {};
           req.param('title') && (_data.title = req.param('title'));
           req.param('desc') && (_data.desc = req.param('desc'));
-          req.param('img') && (_data.img = req.param('coverImg'));
+          req.param('coverImg') && (_data.img = req.param('coverImg'));
           req.param('detail') && (_data.detail = req.param('detail'));
 
           Showcase.update({
@@ -196,7 +195,7 @@ module.exports = {
             return res.jsonp({
               code: '100',
               msg: 'ok',
-              data: updated
+              data: updated[0]
             });
           });
         } else {
@@ -211,7 +210,7 @@ module.exports = {
       _data.moduleType = req.param('module');
       req.param('title') && (_data.title = req.param('title'));
       req.param('desc') && (_data.desc = req.param('desc'));
-      req.param('img') && (_data.img = req.param('coverImg'));
+      req.param('coverImg') && (_data.img = req.param('coverImg'));
       req.param('detail') && (_data.detail = req.param('detail'));
 
       Showcase.create(_data).exec(function(err, created) {
@@ -256,5 +255,62 @@ module.exports = {
   deleteShowcase: function(req, res) {
     var _moduleType = req.param('module');
     var _id = req.param('id');
+    Showcase.destroy({
+      moduleType: _moduleType,
+      id: _id
+    }).exec(function(err,showcase){
+      if (err) {
+        return res.jsonp(err);
+      }
+      return res.jsonp({
+        code: '100',
+        msg: '请求成功'
+      });
+    })
+  },
+
+  /**
+  * 设置文本信息
+  */
+  setContentModule: function(req,res){
+    var _moduleType = req.param('module');
+    var _content = req.param('content');
+    Context.find({
+      moduleType: _moduleType
+    }).exec(function(err,data){
+      if (err) {
+        return res.jsonp(err);
+      }
+      if(data&&data.length!==0){
+        console.log('1')
+        Context.update({
+          moduleType: _moduleType
+        },{
+          content: _content
+        }).exec(function(err,data){
+          if (err) {
+            return res.jsonp(err);
+          }
+          return res.jsonp({
+            code: '100',
+            msg: '请求成功'
+          });
+        });
+      }else{
+        console.log('2')
+        Context.create({
+          moduleType: _moduleType,
+          content: _content
+        }).exec(function(err,data){
+          if (err) {
+            return res.jsonp(err);
+          }
+          return res.jsonp({
+            code: '100',
+            msg: '请求成功'
+          });
+        });
+      }
+    })
   }
 };

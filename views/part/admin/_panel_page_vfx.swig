@@ -24,7 +24,7 @@
                     头部大图
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {formId:'vfxmain' } only %}
+                    {% include "./__form_item.swig" with {formId:'vfxmain',sizecover:'534 x 240',sizeshowcase:'880 x 415' } only %}
                 </div>
             </li>
             <li  class="body__item body__item__normal" data-index='1'>
@@ -32,7 +32,7 @@
                     展示项目1
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {formId: "vfxItems_1" } only %}
+                    {% include "./__form_item.swig" with {formId: "vfxItems_1",sizecover:'267 x 240',sizeshowcase:'880 x 415' } only %}
                 </div>
             </li>
             <li  class="body__item body__item__normal" data-index='2'>
@@ -40,7 +40,7 @@
                     展示项目2
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {formId: "vfxItems_2" } only %}
+                    {% include "./__form_item.swig" with {formId: "vfxItems_2",sizecover:'267 x 240',sizeshowcase:'880 x 415'  } only %}
                 </div>
             </li>
             <li  class="body__item body__item__normal" data-index='3'>
@@ -48,7 +48,7 @@
                     展示项目3
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {formId: "/vfxItems_3" } only %}
+                    {% include "./__form_item.swig" with {formId: "/vfxItems_3",sizecover:'267 x 240',sizeshowcase:'880 x 415'  } only %}
                 </div>
             </li>
         </ul>

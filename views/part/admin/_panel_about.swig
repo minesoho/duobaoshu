@@ -3,5 +3,6 @@
         页面配置 > 关于我们
     </div>
     <div class="panel__body">
+      {% include "__textarea.swig" with {module:'about'} only %}
     </div>
 </div>

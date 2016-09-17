@@ -13,7 +13,7 @@
           </div>
         </div>
         {% include "_about.swig" with about only%}
-        {% include "_concat.swig"  with concat only%}
+        {% include "_concat.swig"  with concact only%}
         {% include "_jobs.swig"  with jobs only%}
         <div class="slider__cover step1">
             <li class="slider__page slider__page__vfx slider__page--prev" order='0'>

@@ -3,5 +3,6 @@
         页面配置 > 工作机会
     </div>
     <div class="panel__body">
+    {% include "__textarea.swig" with {module:'jobs'} only %}
     </div>
 </div>

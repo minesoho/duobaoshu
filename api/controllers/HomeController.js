@@ -7,21 +7,24 @@ let _mock = require('./mock.json');
 
 module.exports = {
     index: function(req,res){
-        let locals = null;
+        let locals = {};
         let vfx = {
           more: null,
           main: null,
-          list:[]
+          list:[],
+          showcases: []
         };
         let animation = {
           more: null,
           main: null,
-          list:[]
+          list:[],
+          showcases: []
         };
         let origin = {
           more: null,
           main: null,
-          list:[]
+          list:[],
+          showcases: []
         };
 
 
@@ -96,33 +99,63 @@ module.exports = {
                         default:
                       }
                     });
-                    locals = {
-                      vfx: vfx,
-                      animation: animation,
-                      origin: origin
-                    };
-                    // locals = _mock;
-                    for(let key in locals){
-                        if(locals[key].list&&locals[key].list.length < 3){
-                            for(let i=0,len=3-locals[key].list.length;i<len;i++){
-                                locals[key].list.push({
-                                    img:'/images/blank.jpg',
-                                    blank: true
-                                });
+                    Showcase.find().exec(function(err,data){
+                      if(err){
+                          throw err;
+                      }
+                      data.forEach(function(value){
+                        switch (value.moduleType) {
+                          case 'vfx':
+                            vfx.showcases.push(value);
+                            break;
+                          case 'animation':
+                            animation.showcases.push(value);
+                            break;
+                          case 'origin':
+                            origin.showcases.push(value);
+                            break;
+                          default:
+                        }
+                      });
+                      Context.find().exec(function(err,data){
+                        if(err){
+                            throw err;
+                        }
+                        data.forEach(function(value){
+                          locals[value.moduleType]={
+                            desc: value.content
+                          };
+                        });
+                        locals = Object.assign({},locals,{
+                          vfx: vfx,
+                          animation: animation,
+                          origin: origin
+                        });
+                        // locals = _mock;
+                        for(let key in locals){
+                            if(locals[key].list&&locals[key].list.length < 3){
+                                for(let i=0,len=3-locals[key].list.length;i<len;i++){
+                                    locals[key].list.push({
+                                        img:'/images/blank.jpg',
+                                        blank: true
+                                    });
+                                }
+                            }
+                            if(!locals[key].main||!locals[key].main.img){
+                              locals[key].main = {
+                                img:'/images/blank.jpg',
+                                blank: true
+                              }
                             }
                         }
-                        if(!locals[key].main||!locals[key].main.img){
-                          locals[key].main = {
-                            img:'/images/blank.jpg',
-                            blank: true
-                          }
-                        }
-                    }
-                    let html = swig.renderFile('./views/home.swig',{
-                        title: "多宝树影视科技",
-                        data: locals
+                        let html = swig.renderFile('./views/home.swig',{
+                            title: "多宝树影视科技",
+                            data: locals
+                        });
+                        return res.send(html);
+                      });
+
                     });
-                    return res.send(html);
                 });
             });
         });
