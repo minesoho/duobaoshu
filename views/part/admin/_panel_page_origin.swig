@@ -40,7 +40,7 @@
                     展示项目2
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {formId: "/originItems_2",sizecover:'267 x 240',sizeshowcase:'880 x 415'  } only %}
+                    {% include "./__form_item.swig" with {formId: "originItems_2",sizecover:'267 x 240',sizeshowcase:'880 x 415'  } only %}
                 </div>
             </li>
             <li  class="body__item body__item__normal" data-index='3'>
@@ -48,7 +48,7 @@
                     展示项目3
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {formId: "/originItems_3",sizecover:'267 x 240',sizeshowcase:'880 x 415'  } only %}
+                    {% include "./__form_item.swig" with {formId: "originItems_3",sizecover:'267 x 240',sizeshowcase:'880 x 415'  } only %}
                 </div>
             </li>
         </ul>
