@@ -48,7 +48,7 @@
                     展示项目3
                 </div>
                 <div class="item__body">
-                    {% include "./__form_item.swig" with {formId: "/vfxItems_3",sizecover:'267 x 240',sizeshowcase:'880 x 415'  } only %}
+                    {% include "./__form_item.swig" with {formId: "vfxItems_3",sizecover:'267 x 240',sizeshowcase:'880 x 415'  } only %}
                 </div>
             </li>
         </ul>
