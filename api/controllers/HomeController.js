@@ -81,7 +81,9 @@ module.exports = {
                       break;
                   }
                 });
-                Item.find().exec(function(err,data){
+                Item.find({
+                  sort: 'index'
+                }).exec(function(err,data){
                     if(err){
                         throw err;
                     }
