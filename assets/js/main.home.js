@@ -278,16 +278,19 @@
         });
       }
     }).on('click','.tts__head .nav__item',function(){
-      if(locked){
-        return;
-      }
+      // if(locked){
+      //   return;
+      // }
       var $this = $(this);
       var _page = $this.data('page');
       var $page = $('.page__nav__cover--'+_page);
-      $page.find('.content').html($page.find('.content__hidden').text());
-      $page.show();
+      $('.page__nav__cover').hide();
+      $pageEntryCover.hide();
       $sliderBtns.hide();
       $spotBox.hide();
-      locked = true;
+      $page.find('.content').html($page.find('.content__hidden').text());
+      $page.show();
+
+      // locked = true;
     });
 })(window);
