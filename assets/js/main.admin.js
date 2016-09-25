@@ -7,7 +7,7 @@ $(function() {
 
     var $box = $('#' + res.targetId);
     $box.addClass('done');
-    $box.find('.form__area__hidden').attr('data-src', res.fd);
+    $box.find('.form__area__hidden').attr('_src', res.fd);
   }
   var apis = {
     settitles: '/settitles',
@@ -106,7 +106,7 @@ $(function() {
     var _title = $panel.find('.form__input[name="title"]')[0].value,
       _subtitle = $panel.find('.form__input[name="subtitle"]')[0].value,
       _desc = $panel.find('.form__input[name="shortcut"]')[0].value,
-      _coverImg = $panel.find('.form__item__image--cover .form__area__hidden').data('src');
+      _coverImg = $panel.find('.form__item__image--cover .form__area__hidden').attr('_src');
 
     _data.module = module;
     _data.title = _title || null;
@@ -129,7 +129,7 @@ $(function() {
         var $bodyItem = $($radio.parents('.body__item')[0]);
         var _type = $bodyItem.find('.info__list .info__item.current').data('type');
         var _desc = $bodyItem.find('.form__input[name="infodesc"]').val();
-        var _img = $bodyItem.children('.form__item__image').find('.form__area__hidden').data('src');
+        var _img = $bodyItem.children('.form__item__image').find('.form__area__hidden').attr('_src');
         if(!_type||!_desc||!_img){
           alert('图文混排内容不完整');
           return;
@@ -149,7 +149,6 @@ $(function() {
       data: _data,
       method: 'post',
       success: function(res){
-        console.log('sdf')
         if(!res||res.code !== '100'){
           alert('操作失败');
           return;
@@ -157,7 +156,7 @@ $(function() {
         var _data = res.data;
         var _arr = [];
         _arr.push(_data);
-        var _html = showcaseHtml(_arr,_data.module);
+        var _html = showcaseHtml(_arr,_data.moduleType);
         var id = _data.id;
         var $list = $('.panels__item[data-page='+module+'-more]').find('.showcase__list');
         if($list.find('.showcase__item[data-id='+id+']').length===0){
@@ -169,6 +168,10 @@ $(function() {
       complete: function(){
         $panel.removeClass('show');
         $panel.find('form').removeClass('done');
+        var $input_img = $panel.find('.form__input--img');
+        var $clone = $('<input class="form__input form__input--img" type="file" name="uploadFile" placeholder="选择本地图片">');
+        $clone.insertAfter($input_img);
+        $input_img.remove();
       }
     })
   }
@@ -247,7 +250,7 @@ $(function() {
     var _title = $box.find('.form__input[name="title"]')[0].value,
       _subtitle = $box.find('.form__input[name="subtitle"]')[0].value,
       _desc = $box.find('.form__input[name="shortcut"]')[0].value,
-      _coverImg = $box.find('.form__item__image--cover .form__area__hidden').data('src');
+      _coverImg = $box.find('.form__item__image--cover .form__area__hidden').attr('_src');
 
     _data.module = module;
     _data.title = _title || null;
@@ -270,7 +273,7 @@ $(function() {
         var $bodyItem = $($radio.parents('.body__item')[0]);
         var _type = $bodyItem.find('.info__list .info__item.current').data('type');
         var _desc = $bodyItem.find('.form__input[name="infodesc"]').val();
-        var _img = $bodyItem.children('.form__item__image').find('.form__area__hidden').data('src');
+        var _img = $bodyItem.children('.form__item__image').find('.form__area__hidden').attr('_src');
         if(!_type||!_desc||!_img){
           alert('图文混排内容不完整');
           return;
@@ -313,7 +316,7 @@ $(function() {
     var _title = $box.find('.form__input[name="title"]')[0].value,
       _subtitle = $box.find('.form__input[name="subtitle"]')[0].value,
       _desc = $box.find('.form__input[name="shortcut"]')[0].value,
-      _coverImg = $box.find('.form__item__image--cover .form__area__hidden').data('src');
+      _coverImg = $box.find('.form__item__image--cover .form__area__hidden').attr('_src');
 
     _data.module = module;
     _data.title = _title || null;
@@ -336,7 +339,7 @@ $(function() {
         var $bodyItem = $($radio.parents('.body__item')[0]);
         var _type = $bodyItem.find('.info__list .info__item.current').data('type');
         var _desc = $bodyItem.find('.form__input[name="infodesc"]').val();
-        var _img = $bodyItem.children('.form__item__image').find('.form__area__hidden').data('src');
+        var _img = $bodyItem.children('.form__item__image').find('.form__area__hidden').attr('_src');
         if(!_type||!_desc||!_img){
           alert('图文混排内容不完整');
           return;
@@ -456,6 +459,10 @@ $(function() {
   }).on('click', '.showcase__edit__panel .close__btn', function() {
     $('.showcase__edit__panel').removeClass('show').attr('_module', '').attr('_id', '');
     $('.showcase__edit__panel').find('form').removeClass('done');
+    var $input_img = $('.showcase__edit__panel').find('.form__input--img');
+    var $clone = $('<input class="form__input form__input--img" type="file" name="uploadFile" placeholder="选择本地图片">');
+    $clone.insertAfter($input_img);
+    $input_img.remove();
   }).on('click','.showcase__edit__panel .form__item__submit',function(){
     var $panel = $(this).parents('.showcase__edit__panel');
     var _id = $panel.attr('_id');
