@@ -38,14 +38,14 @@
             $spots.removeClass('current');
             $spotBox.find('.spot[order="1"]').addClass('current');
             lock_slide = false;
-        }else if($cover.hasClass('step1')){
-            $cover.removeClass('step1').addClass('step2');
-            $pages.removeClass('current');
-            $pageBox.find('.slider__page[order="2"]').addClass(CLASS_CURRENT);
-            $spots.removeClass('current');
-            $spotBox.find('.spot[order="2"]').addClass('current');
-            $('.main__slider__btn--next').addClass('hide');
-            lock_slide = false;
+        // }else if($cover.hasClass('step1')){
+        //     $cover.removeClass('step1').addClass('step2');
+        //     $pages.removeClass('current');
+        //     $pageBox.find('.slider__page[order="2"]').addClass(CLASS_CURRENT);
+        //     $spots.removeClass('current');
+        //     $spotBox.find('.spot[order="2"]').addClass('current');
+        //     $('.main__slider__btn--next').addClass('hide');
+        //     lock_slide = false;
         }else{
             lock_slide = false;
             return;
@@ -61,15 +61,16 @@
         $sliderBtns.show();
         $spotBox.show();
         var $cover = $('.main__slider__pages .slider__cover');
-        if($cover.hasClass('step2')){
-            $cover.removeClass('step2').addClass('step1');
-            $pages.removeClass(CLASS_CURRENT);
-            $pageBox.find('.slider__page[order="1"]').addClass(CLASS_CURRENT);
-            $spots.removeClass('current');
-            $spotBox.find('.spot[order="1"]').addClass('current');
-            $('.main__slider__btn--next').removeClass('hide');
-            lock_slide = false;
-        }else if($cover.hasClass('step1')){
+        // if($cover.hasClass('step2')){
+        //     $cover.removeClass('step2').addClass('step1');
+        //     $pages.removeClass(CLASS_CURRENT);
+        //     $pageBox.find('.slider__page[order="1"]').addClass(CLASS_CURRENT);
+        //     $spots.removeClass('current');
+        //     $spotBox.find('.spot[order="1"]').addClass('current');
+        //     $('.main__slider__btn--next').removeClass('hide');
+        //     lock_slide = false;
+        // }else 
+        if($cover.hasClass('step1')){
             $cover.removeClass('step1').addClass('step0');
             $pages.removeClass(CLASS_CURRENT);
             $pageBox.find('.slider__page[order="0"]').addClass(CLASS_CURRENT);

@@ -16,12 +16,12 @@
             <li class="body__item" data-page='animation-more' showcase='animation'>
                 动画作品 - 更多
             </li>
-            <li class="body__item" data-page='origin'>
+            {# <li class="body__item" data-page='origin'>
                 原创作品 - 首页
             </li>
             <li class="body__item" data-page='origin-more' showcase='origin'>
                 原创作品 - 更多
-            </li>
+            </li> #}
             <li class="body__item" data-page='about'>
                 关于我们
             </li>
