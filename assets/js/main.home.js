@@ -69,7 +69,7 @@
         //     $spotBox.find('.spot[order="1"]').addClass('current');
         //     $('.main__slider__btn--next').removeClass('hide');
         //     lock_slide = false;
-        // }else 
+        // }else
         if($cover.hasClass('step1')){
             $cover.removeClass('step1').addClass('step0');
             $pages.removeClass(CLASS_CURRENT);
@@ -277,6 +277,15 @@
           vid: _vid,
           newPlayer: true
         });
+      }else{
+        var _entry = $(this).find('.showcase__entry__info');
+        if(_entry.length!==0){
+            var _html = _entry.html();
+            $pageEntryCoverBox.html(_html);
+            $pageEntryCover.show();
+            $sliderBtns.hide();
+            $spotBox.hide();
+        }
       }
     }).on('click','.tts__head .nav__item',function(){
       // if(locked){

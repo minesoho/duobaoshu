@@ -1,4 +1,4 @@
-<li class="showcases__item" data-dtype="{{type}}" {% if type=="video" %}data-videoid="{{videoId}}"{%endif%}>
+<li class="showcases__item" data-dtype="{{detail.type}}" {% if detail.type=="video" %}data-videoid="{{videoId}}"{%endif%}>
   <div class="showcase__entry">
     {%if title%}
     <div class="entry__title">
@@ -12,4 +12,9 @@
   <div class="showcase__thumb">
       <img src="{{img}}" alt="{{title}}" />
   </div>
+  {% if detail.type !== 'video' %}
+    <div class="showcase__entry__info" style='display:none;'>
+      {% include "./entry_cover_info.swig" with detail only %}
+    </div>
+  {% endif %}
 </li>

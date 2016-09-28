@@ -1,26 +1,4 @@
 <div class="page__vfx clearfix">
-    <div class="page__vfx__cover">
-        <ul class="vfx__cover__list">
-            <li class="vfx__cover__item">
-                <img src="/images/test/vfx_item_1.jpg" alt="" />
-            </li>
-            <li class="vfx__cover__item">
-                <img src="/images/test/vfx_item_1.jpg" alt="" />
-            </li>
-            <li class="vfx__cover__item">
-                <img src="/images/test/vfx_item_1.jpg" alt="" />
-            </li>
-            <li class="vfx__cover__item">
-                <img src="/images/test/vfx_item_1.jpg" alt="" />
-            </li>
-            <li class="vfx__cover__item">
-                <img src="/images/test/vfx_item_1.jpg" alt="" />
-            </li>
-            <li class="vfx__cover__item">
-                <img src="/images/test/vfx_item_1.jpg" alt="" />
-            </li>
-        </ul>
-    </div>
     <div class="vfx__more">
         {%include './components/cube_more.swig' with more only%}
     </div>
