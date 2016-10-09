@@ -8,6 +8,70 @@
 // @size-unit-mini: @window-width-mini/2;
 //
 // @window-width-h5: 960px;
+@-webkit-keyframes arrowdown {
+    0%,30% {
+        opacity: 0;
+        -webkit-transform: translate(0,-15px) rotate(90deg) scale(0.5);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0,-5px) rotate(90deg) scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translate(0,0) rotate(90deg) scale(0.5);
+    }
+}
+@-moz-keyframes arrowdown {
+    0%,30% {
+        opacity: 0;
+        -webkit-transform: translate(0,-15px) rotate(90deg) scale(0.5);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0,-5px) rotate(90deg) scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translate(0,0) rotate(90deg) scale(0.5);
+    }
+}
+@-o-keyframes arrowdown {
+    0%,30% {
+        opacity: 0;
+        -webkit-transform: translate(0,-15px) rotate(90deg) scale(0.5);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0,-5px) rotate(90deg) scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translate(0,0) rotate(90deg) scale(0.5);
+    }
+}
+@keyframes arrowdown {
+    0%,30% {
+        opacity: 0;
+        -webkit-transform: translate(0,-15px) rotate(90deg) scale(0.5);
+    }
+
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0,-5px) rotate(90deg) scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        -webkit-transform: translate(0,0) rotate(90deg) scale(0.5);
+    }
+}
 .body--h5{
     overflow-x: hidden;
     height: 100%;
@@ -84,7 +148,7 @@
           padding: 35px 20px !important;
           .info--updown{
             .entry__cover__desc{
-              font-size: 16px !important;
+              font-size: 12px !important;
             }
           }
         }
@@ -189,7 +253,12 @@
                     bottom: 0;
                     transform: rotate(90deg) scale(0.5);
                     margin-left: -21px;
+                    margin-top: -40px;
                     position: fixed;
+                    -webkit-animation: arrowdown 1.5s infinite ease-in-out;
+                    -moz-animation: arrowdown 1.5s infinite ease-in-out;
+                    -o-animation: arrowdown 1.5s infinite ease-in-out;
+                    animation: arrowdown 1.5s infinite ease-in-out;
                     &.hide{
                       display: none;
                     }
@@ -288,6 +357,7 @@
             height: 50px !important;
             line-height: 30px !important;
             font-size: 9px !important;
+            .transform(scale(0.7));
             .footer__link{
               margin-bottom: -18px;
               display: block;
