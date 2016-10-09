@@ -260,33 +260,33 @@
         $sliderBtns.toggle();
         $spotBox.toggle();
       }
-    }).on('click','.showcases__item',function(e){
-      var ev = e||window.event;
-      ev.stopPropagation();
-      var $item = $(this);
-      var _type = $item.data('dtype');
-      if(_type == 'video'){
-        var _vid = $item.data('videoid');
-        $pageEntryCoverBox.html('<div id="youkuplayer" style=""></div>');
-        $pageEntryCover.show();
-        $sliderBtns.hide();
-        $spotBox.hide();
-        player = new YKU.Player('youkuplayer',{
-          styleid: '0',
-          client_id: '58fa8f58142b191f',
-          vid: _vid,
-          newPlayer: true
-        });
-      }else{
-        var _entry = $(this).find('.showcase__entry__info');
-        if(_entry.length!==0){
-            var _html = _entry.html();
-            $pageEntryCoverBox.html(_html);
-            $pageEntryCover.show();
-            $sliderBtns.hide();
-            $spotBox.hide();
-        }
-      }
+    // }).on('click','.showcases__item',function(e){
+    //   var ev = e||window.event;
+    //   ev.stopPropagation();
+    //   var $item = $(this);
+    //   var _type = $item.data('dtype');
+    //   if(_type == 'video'){
+    //     var _vid = $item.data('videoid');
+    //     $pageEntryCoverBox.html('<div id="youkuplayer" style=""></div>');
+    //     $pageEntryCover.show();
+    //     $sliderBtns.hide();
+    //     $spotBox.hide();
+    //     player = new YKU.Player('youkuplayer',{
+    //       styleid: '0',
+    //       client_id: '58fa8f58142b191f',
+    //       vid: _vid,
+    //       newPlayer: true
+    //     });
+    //   }else{
+    //     var _entry = $(this).find('.showcase__entry__info');
+    //     if(_entry.length!==0){
+    //         var _html = _entry.html();
+    //         $pageEntryCoverBox.html(_html);
+    //         $pageEntryCover.show();
+    //         $sliderBtns.hide();
+    //         $spotBox.hide();
+    //     }
+    //   }
     }).on('click','.tts__head .nav__item',function(){
       // if(locked){
       //   return;

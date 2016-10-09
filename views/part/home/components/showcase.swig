@@ -5,16 +5,16 @@
       {{title}}
     </div>
     {%endif%}
-    <div class="entry__action" data-action="">
+    {# <div class="entry__action" data-action="">
         <i class="tts__icon tts__icon__play"></i>
-    </div>
+    </div> #}
   </div>
   <div class="showcase__thumb">
       <img src="{{img}}" alt="{{title}}" />
   </div>
-  {% if detail.type !== 'video' %}
+  {# {% if detail.type !== 'video' %}
     <div class="showcase__entry__info" style='display:none;'>
       {% include "./entry_cover_info.swig" with detail only %}
     </div>
-  {% endif %}
+  {% endif %} #}
 </li>
