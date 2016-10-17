@@ -253,7 +253,7 @@
             swipe_end = null;
         }
     }).on('touchend','.slider__cover .slider__page__showcases',function(){
-      return;
+      return false;
     }).on('click','.tts__more',function(){
       var $module = $(this).parent();
       var _module = $module.attr('class').split('__more')[0];
