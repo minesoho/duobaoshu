@@ -171,18 +171,22 @@
         $(this).parents('.origin__showcases').hide();
         $sliderBtns.show();
         $spotBox.show();
-        locked = false;
-    // }).on('touchend','.cover__action--close',function(e){
-    //   var ev = e||window.event;
-    //   ev.stopPropagation();
-    //     $(this).parents('.page__entry__cover').hide();
-    //     $(this).parents('.page__nav__cover').hide();
-    //     $(this).parents('.vfx__showcases').hide();
-    //     $(this).parents('.animation__showcases').hide();
-    //     $(this).parents('.origin__showcases').hide();
-    //     $sliderBtns.show();
-    //     $spotBox.show();
-    //     locked = false;
+        if(locked){
+          locked = false;
+        }
+    }).on('touchend','.cover__action--close',function(e){
+      var ev = e||window.event;
+      ev.stopPropagation();
+        $(this).parents('.page__entry__cover').hide();
+        $(this).parents('.page__nav__cover').hide();
+        $(this).parents('.vfx__showcases').hide();
+        $(this).parents('.animation__showcases').hide();
+        $(this).parents('.origin__showcases').hide();
+        $sliderBtns.show();
+        $spotBox.show();
+        if(locked){
+          locked = false;
+        }
     }).on('click','.tts__item',function(){
         var $this = $(this);
         var _type = $this.data('dtype');
