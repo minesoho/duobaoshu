@@ -6,6 +6,7 @@
   var locked = false;
   var lock_slide = false;
   var timer_slide = 500;
+  var alert_closed = true;
 
   var $pageBox = $('.main__slider__pages');
   var $pages = $('.slider__page');
@@ -23,6 +24,25 @@
     swipe_end = null;
 
   var SWIPE_STEP = 30;
+
+  var tap = isPhone() ? 'touchend' : 'click';
+
+  function isPhone() {
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+    var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+    var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+    var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+    var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+    var bIsAndroid = sUserAgent.match(/android/i) == "android";
+    var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+    var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+    if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   function nextSwipePage() {
     if (lock_slide) {
@@ -116,7 +136,7 @@
       $prev.removeClass(CLASS_PREV).removeClass(CLASS_NEXT);
       lock_slide = false;
     });
-  }).on('click', '.main__slider__btn--next', function(ev) {
+  }).on(tap, '.main__slider__btn--next', function(ev) {
     if (lock_slide) {
       return;
     }
@@ -162,7 +182,7 @@
       });
     }
 
-  }).on('click', '.cover__action--close', function(e) {
+  }).on(tap, '.cover__action--close', function(e) {
     var ev = e || window.event;
     ev.stopPropagation();
     $(this).parents('.page__entry__cover').hide();
@@ -173,20 +193,7 @@
     if (locked) {
       locked = false;
     }
-  // }).on('touchend', '.cover__action--close', function(e) {
-  //   var ev = e || window.event;
-  //   ev.stopPropagation();
-  //   $(this).parents('.page__entry__cover').hide();
-  //   $(this).parents('.page__nav__cover').hide();
-  //   $(this).parents('.vfx__showcases').hide();
-  //   $(this).parents('.animation__showcases').hide();
-  //   $(this).parents('.origin__showcases').hide();
-  //   $sliderBtns.show();
-  //   $spotBox.show();
-  //   if (locked) {
-  //     locked = false;
-  //   }
-  }).on('click', '.tts__item', function() {
+  }).on(tap, '.tts__item', function() {
     var $this = $(this);
     var _type = $this.data('dtype');
     if (_type == 'video') {
@@ -215,7 +222,7 @@
       }
     }
 
-  }).on('click', '.tts__main', function() {
+  }).on(tap, '.tts__main', function() {
     var $this = $(this);
     var _type = $this.data('dtype');
     if (_type == 'video') {
@@ -257,7 +264,7 @@
     }
   }).on('touchend', '.slider__cover .slider__page__showcases', function() {
     return false;
-  }).on('click', '.tts__more', function() {
+  }).on(tap, '.tts__more', function() {
     var $module = $(this).parent();
     var _module = $module.attr('class').split('__more')[0];
     if ($('.' + _module + '__showcases').length !== 0) {
@@ -292,7 +299,7 @@
     //         $spotBox.hide();
     //     }
     //   }
-  }).on('click', '.tts__head .nav__item', function() {
+  }).on(tap, '.tts__head .nav__item', function() {
     // if(locked){
     //   return;
     // }
