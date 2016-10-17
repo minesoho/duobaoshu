@@ -59,14 +59,6 @@
       $spots.removeClass('current');
       $spotBox.find('.spot[order="1"]').addClass('current');
       lock_slide = false;
-      // }else if($cover.hasClass('step1')){
-      //     $cover.removeClass('step1').addClass('step2');
-      //     $pages.removeClass('current');
-      //     $pageBox.find('.slider__page[order="2"]').addClass(CLASS_CURRENT);
-      //     $spots.removeClass('current');
-      //     $spotBox.find('.spot[order="2"]').addClass('current');
-      //     $('.main__slider__btn--next').addClass('hide');
-      //     lock_slide = false;
     } else {
       lock_slide = false;
       return;
@@ -82,15 +74,6 @@
     $sliderBtns.show();
     $spotBox.show();
     var $cover = $('.main__slider__pages .slider__cover');
-    // if($cover.hasClass('step2')){
-    //     $cover.removeClass('step2').addClass('step1');
-    //     $pages.removeClass(CLASS_CURRENT);
-    //     $pageBox.find('.slider__page[order="1"]').addClass(CLASS_CURRENT);
-    //     $spots.removeClass('current');
-    //     $spotBox.find('.spot[order="1"]').addClass('current');
-    //     $('.main__slider__btn--next').removeClass('hide');
-    //     lock_slide = false;
-    // }else
     if ($cover.hasClass('step1')) {
       $cover.removeClass('step1').addClass('step0');
       $pages.removeClass(CLASS_CURRENT);
@@ -105,8 +88,8 @@
   }
 
   $(document).on('touchmove', '.body--h5', function(e) {
-    e.preventDefault();
-    return false;
+    // e.preventDefault();
+    // return false;
   }).on('click', '.main__slider__btn--prev', function(ev) {
     if (lock_slide) {
       return;
@@ -272,37 +255,7 @@
       $sliderBtns.toggle();
       $spotBox.toggle();
     }
-    // }).on('click','.showcases__item',function(e){
-    //   var ev = e||window.event;
-    //   ev.stopPropagation();
-    //   var $item = $(this);
-    //   var _type = $item.data('dtype');
-    //   if(_type == 'video'){
-    //     var _vid = $item.data('videoid');
-    //     $pageEntryCoverBox.html('<div id="youkuplayer" style=""></div>');
-    //     $pageEntryCover.show();
-    //     $sliderBtns.hide();
-    //     $spotBox.hide();
-    //     player = new YKU.Player('youkuplayer',{
-    //       styleid: '0',
-    //       client_id: '58fa8f58142b191f',
-    //       vid: _vid,
-    //       newPlayer: true
-    //     });
-    //   }else{
-    //     var _entry = $(this).find('.showcase__entry__info');
-    //     if(_entry.length!==0){
-    //         var _html = _entry.html();
-    //         $pageEntryCoverBox.html(_html);
-    //         $pageEntryCover.show();
-    //         $sliderBtns.hide();
-    //         $spotBox.hide();
-    //     }
-    //   }
   }).on(tap, '.tts__head .nav__item', function() {
-    // if(locked){
-    //   return;
-    // }
     var $this = $(this);
     var _page = $this.data('page');
     var $page = $('.page__nav__cover--' + _page);
@@ -312,7 +265,5 @@
     $spotBox.hide();
     $page.find('.content').html($page.find('.content__hidden').text());
     $page.show();
-
-    // locked = true;
   });
 })(window);
